@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 public class jkbTrack {
 
 
+    //可以通过value去匹配
     @ExcelProperty(value = "扫码时间", index = 0)
     private String jkb_scan_date;
     @ExcelProperty(value = "扫码人证件号码", index = 2)

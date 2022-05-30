@@ -11,23 +11,22 @@ import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.common.xcontent.XContentType;
 
-import java.util.Map;
-
-public class jkbTrackListener extends AnalysisEventListener<jkbTrack> {
+public class b_jkbTrackListener extends AnalysisEventListener<b_jkbTrack> {
 
 
     @SneakyThrows
     @Override
-    public void invoke(jkbTrack jkbTrack, AnalysisContext analysisContext) {
+    public void invoke(b_jkbTrack b_jkbTrack, AnalysisContext analysisContext) {
 
         CreatEs creatEs = new CreatEs();
-        JSONObject toJSON = (JSONObject) JSONObject.toJSON(jkbTrack);
+        JSONObject toJSON = (JSONObject) JSONObject.toJSON(b_jkbTrack);
 
         //增加两个key
-        toJSON.put("caseID","jkb从mysql读任务id"); //从mysql库查询添加
-        toJSON.put("ownerID","jkb从mysql读任务id");
+        toJSON.put("caseID","b_jkb从mysql读任务id"); //从mysql库查询添加
+        //toJSON.put("ownerID","jkb从mysql读任务id");
         toJSON.put("startTime",toJSON.getString("jkb_scan_date"));
-        toJSON.put("addressSource","阳性人员健康宝扫描");
+        toJSON.put("addressSource","点位健康宝扫描");
+        //toJSON.put("addressFromTable","");
 
         RestHighLevelClient esClient = creatEs.createEsClient();
         IndexRequest request = new IndexRequest("flow_test");

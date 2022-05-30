@@ -20,8 +20,6 @@ import java.util.Map;
 public class jzTrackListener extends AnalysisEventListener<jzTrack> {
 
 
-
-
     //一行行处理数据
     @SneakyThrows
     @Override
@@ -33,13 +31,22 @@ public class jzTrackListener extends AnalysisEventListener<jzTrack> {
         RestHighLevelClient esClient = creatEs.createEsClient();
         IndexRequest request = new IndexRequest("flow_test");
 
+        toJSON.put("caseID","jz从mysql读任务id"); //从mysql库查询添加
+        toJSON.put("ownerID","jz从mysql读任务id");
+        toJSON.put("addressSource","基站");
+        toJSON.put("addressFromTable",toJSON.getString("jz_location"));
+
+        toJSON.put("jz_begin_date", toJSON.getString("begin_date"));
+        toJSON.put("jz_end_date", toJSON.getString("end_date"));
+        toJSON.put("jz_location", toJSON.getString("jz_location"));
+
         request.timeout(TimeValue.timeValueSeconds(1));
         request.timeout("1s");
         request.source(toJSON, XContentType.JSON);
 
         IndexResponse indexResponse = esClient.index(request, RequestOptions.DEFAULT);
 
-
+        esClient.close();
         //System.out.println(toJSON);
     }
 
