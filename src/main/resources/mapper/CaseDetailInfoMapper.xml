@@ -6,7 +6,7 @@
     <select id="getAllDetailData" parameterType="int" resultType="entity.CaseDetailInfo" flushCache="true" useCache="false">
         select *
         from case_detail_info
-        where case_detail_id > #{caseDetailId} limit 100
+        where case_detail_id > #{caseDetailId}
     </select>
 
     <select id="getAllDetailDataByTime" resultType="entity.CaseDetailInfo" flushCache="true" useCache="false">

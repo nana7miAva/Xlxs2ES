@@ -51,16 +51,12 @@ public class MysqlDao {
     }
 
 
-    //从mysql查询详细任务表
-    public List<CaseInfo> getCaseInfo(Date updateTime) {
+    public List<CaseInfo> getCaseInfo() {
 
 
         List<CaseInfo> list;
-        if (updateTime == null) {
-            list = caseInfoMapper.getAllCaseInfo();
-        } else {
-            list = caseInfoMapper.getAllCaseInfoByTime(updateTime);
-        }
+
+        list = caseInfoMapper.getAllCaseInfo();
 
         return list;
     }

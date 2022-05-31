@@ -1,14 +1,33 @@
-package toes;
+package test;
 
 import com.alibaba.excel.EasyExcel;
 import listener.jzTrackListener;
+import org.apache.http.HttpHost;
+import org.elasticsearch.client.RequestOptions;
+import org.elasticsearch.client.RestClient;
+import org.elasticsearch.client.RestClientBuilder;
+import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.client.indices.GetIndexRequest;
+import toes.jzTrack;
 
 import java.io.File;
+import java.io.IOException;
 
 public class test {
 
+    public static void main(String[] args) throws IOException {
 
-    public static void main(String[] args) {
+        RestClientBuilder restClientBuilder = RestClient.builder(
+                new HttpHost("172.16.10.49", 9200, "http"));
+        RestHighLevelClient restHighLevelClient = new RestHighLevelClient(restClientBuilder);
+        GetIndexRequest getIndexRequest = new GetIndexRequest("flow_test2");
+        boolean exists = restHighLevelClient.indices().exists(getIndexRequest, RequestOptions.DEFAULT);
+        System.out.println(exists);
+        restHighLevelClient.close();
+
+    }
+
+    public static void main2(String[] args) {
 
         String b_jkb = "C:\\Users\\39067\\AppData\\Roaming\\Tencent\\WXWork\\Data\\1688856634259340\\Cache\\File\\2022-05\\新世界百货健康宝扫码记录.xlsx";
         String jkb = "C:\\Users\\39067\\AppData\\Roaming\\Tencent\\WXWork\\Data\\1688856634259340\\Cache\\File\\2022-05\\健康宝.xlsx";
@@ -27,7 +46,7 @@ public class test {
         //ArrayList<jzTrack> jz = new ArrayList<>();
 
         //基站
-        EasyExcel.read(new File(jz), jzTrack.class, new jzTrackListener()).sheet("压缩结果").doRead();
+        //EasyExcel.read(new File(jz), jzTrack.class, new jzTrackListener()).sheet("压缩结果").doRead();
 
         //健康宝
         //EasyExcel.read(new File(jkb), jkbTrack.class, new jkbTrackListener()).sheet("扫码人查询结果").doRead();

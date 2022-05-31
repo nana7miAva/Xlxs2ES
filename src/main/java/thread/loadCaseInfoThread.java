@@ -1,12 +1,17 @@
 package thread;
 
 import cache.MemoryCache;
+import com.google.errorprone.annotations.Var;
 import entity.CaseDetailInfo;
 import entity.CaseInfo;
 import mysql.MysqlDao;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.OffsetDateTime;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @Author：WeiPengCheng
@@ -16,12 +21,15 @@ public class loadCaseInfoThread implements Runnable {
 
     private MysqlDao mysqlDao;
     private Date lastUpdateTime;
+    private SimpleDateFormat simpleDateFormat;
 
-    public loadCaseInfoThread(){
+    public loadCaseInfoThread() {
         this.mysqlDao = new MysqlDao();
         loadCaseInfo();
         this.lastUpdateTime = getBeforeTime(5);
+        simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     }
+
     @Override
     public void run() {
 
@@ -29,28 +37,45 @@ public class loadCaseInfoThread implements Runnable {
             try {
                 Thread.sleep(10 * 1000);
                 loadCaseInfo();
+                this.lastUpdateTime = getBeforeTime(5);
             } catch (InterruptedException e) {
 
             }
         }
     }
 
+
     //加载caseInfo中的任务到内存中
     public void loadCaseInfo() {
 
-        while (true){
-            List<CaseInfo> caseInfos = mysqlDao.getCaseInfo(lastUpdateTime);
 
-            if (caseInfos.size() == 0 || caseInfos.isEmpty()){
+        while (true) {
+
+
+            List<CaseInfo> caseInfos = mysqlDao.getCaseInfo();
+
+            if (caseInfos.size() == 0 || caseInfos.isEmpty()) {
                 return;
             }
 
+            System.out.println("caseInfos:" + caseInfos.size());
             for (CaseInfo caseInfo : caseInfos) {
+                System.out.println("aa");
                 CaseDetailInfo caseDetailInfo = mysqlDao.getCaseDetailInfo(caseInfo.getCaseId());
-                MemoryCache.schemeCache.put(caseInfo.getCaseId(),caseDetailInfo);
+
+                if (Objects.isNull(caseDetailInfo)) {
+                    continue;
+                }
+
+                System.out.println("12.----" + caseDetailInfo);
+
+                MemoryCache.schemeCache.put(caseInfo.getCaseId(), caseDetailInfo);
             }
 
+            break;
+
         }
+
     }
 
 

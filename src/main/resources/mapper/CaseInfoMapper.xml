@@ -6,7 +6,7 @@
     <select id="getAllCaseInfo"  resultType="entity.CaseInfo" flushCache="true" useCache="false">
         select *
         from case_info
-          and word_status = 3 and excel_status = 1 order by update_time asc limit 100
+          where word_status = 3 and excel_status = 1 order by update_time asc limit 100
     </select>
 
     <select id="getAllCaseInfoByTime" resultType="entity.CaseInfo" flushCache="true" useCache="false">

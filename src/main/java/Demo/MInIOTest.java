@@ -20,7 +20,7 @@ public class MInIOTest {
         InputStream mediaByObjectName = minioUtil.getMediaByObjectName(wosName, "");
 
 
-        EasyExcel.read(mediaByObjectName, jzTrack.class, new jzTrackListener()).sheet("压缩结果").doRead();
+        //EasyExcel.read(mediaByObjectName, jzTrack.class, new jzTrackListener()).sheet("压缩结果").doRead();
 
 
     }

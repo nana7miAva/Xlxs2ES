@@ -18,12 +18,19 @@ import java.util.Date;
 
 public class BusFlowListener extends AnalysisEventListener<BusFlow> {
 
+    private String caseID;
+    private RestHighLevelClient restHighLevelClient;
+
+    public BusFlowListener(String caseID, RestHighLevelClient restHighLevelClient) {
+        this.caseID = caseID;
+        this.restHighLevelClient = restHighLevelClient;
+    }
 
     @SneakyThrows
     @Override
     public void invoke(BusFlow busFlow, AnalysisContext analysisContext) {
 
-        CreatEs creatEs = new CreatEs();
+
         JSONObject toJSON1 = (JSONObject) JSONObject.toJSON(busFlow);
         JSONObject toJSON2 = (JSONObject) JSONObject.toJSON(busFlow);
         JSONObject toJSON3 = (JSONObject) JSONObject.toJSON(busFlow);
@@ -71,7 +78,6 @@ public class BusFlowListener extends AnalysisEventListener<BusFlow> {
             //toJSON3.put("addressFromTable", toJSON3.getString("bus_pay_platform_name"));
 
 
-            RestHighLevelClient esClient = creatEs.createEsClient();
             IndexRequest request = new IndexRequest("flow_test2");
 
             request.timeout(TimeValue.timeValueSeconds(1));
@@ -80,7 +86,7 @@ public class BusFlowListener extends AnalysisEventListener<BusFlow> {
             request.source(toJSON2, XContentType.JSON);
             //request.source(toJSON3, XContentType.JSON);
 
-            IndexResponse indexResponse = esClient.index(request, RequestOptions.DEFAULT);
+            IndexResponse indexResponse = restHighLevelClient.index(request, RequestOptions.DEFAULT);
 
 
             //System.out.println(toJSON);
@@ -115,7 +121,6 @@ public class BusFlowListener extends AnalysisEventListener<BusFlow> {
             toJSON3.put("addressFromTable", toJSON3.getString("bus_pay_platform_name"));
 
 
-            RestHighLevelClient esClient = creatEs.createEsClient();
             IndexRequest request = new IndexRequest("flow_test2");
 
             request.timeout(TimeValue.timeValueSeconds(1));
@@ -124,7 +129,7 @@ public class BusFlowListener extends AnalysisEventListener<BusFlow> {
             request.source(toJSON2, XContentType.JSON);
             request.source(toJSON3, XContentType.JSON);
 
-            IndexResponse indexResponse = esClient.index(request, RequestOptions.DEFAULT);
+            IndexResponse indexResponse = restHighLevelClient.index(request, RequestOptions.DEFAULT);
 
 
             //System.out.println(toJSON);
