@@ -30,55 +30,64 @@ public class testMysql {
         MinioUtil minioUtil = new MinioUtil();
         for (Map.Entry<String, CaseDetailInfo> stringCaseDetailInfoEntry : MemoryCache.schemeCache.entrySet()) {
 
+            System.out.println("当前案例" + stringCaseDetailInfoEntry.getValue().getName());
 
             CaseDetailInfo value = stringCaseDetailInfoEntry.getValue();
             String caseId = value.getCaseId();
             String wosName = value.getWosName();
             String name = value.getName();//文件名称
 
+
             mysqlDao.updateExcelStatusBtId(caseId, 2);
 
+            if (value.getAnalysisStatus() != 1) {
+                continue;
+            }
+
             if (name.contains("支付宝") && name.contains("xls")) {
+                mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 2);
                 InputStream mediaByObjectName = minioUtil.getMediaByObjectName(wosName, "");
                 EasyExcel.read(mediaByObjectName, zfbTrack.class, new zfbTrackListener(caseId, esClient)).sheet("18701457955").doRead();
-                mysqlDao.updateAnalysisStatusBtId(caseId, 3);
+                mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 3);
             }
 
             if (name.contains("JZ") && name.contains("xls")) {
+                mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 2);
                 InputStream mediaByObjectName = minioUtil.getMediaByObjectName(wosName, "");
                 EasyExcel.read(mediaByObjectName, jzTrack.class, new jzTrackListener(caseId, esClient)).sheet("压缩结果").doRead();
-                mysqlDao.updateAnalysisStatusBtId(caseId, 3);
+                mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 3);
 
             }
-
-
 
 
             if (name.contains("公交") && name.contains("xls")) {
+                mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 2);
                 InputStream mediaByObjectName = minioUtil.getMediaByObjectName(wosName, "");
                 EasyExcel.read(mediaByObjectName, BusFlow.class, new BusFlowListener(caseId, esClient)).headRowNumber(4).sheet().doRead();
-                mysqlDao.updateAnalysisStatusBtId(caseId, 3);
+                mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 3);
             }
 
             if (name.contains("健康宝") && name.contains("xls")) {
+                mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 2);
                 InputStream mediaByObjectName = minioUtil.getMediaByObjectName(wosName, "");
                 EasyExcel.read(mediaByObjectName, jkbTrack.class, new jkbTrackListener(caseId, esClient)).sheet("扫码人查询结果").doRead();
-                mysqlDao.updateAnalysisStatusBtId(caseId, 3);
+                mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 3);
             }
 
 
-
             if (name.contains("微信") && name.contains("xls")) {
+                mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 2);
                 InputStream mediaByObjectName = minioUtil.getMediaByObjectName(wosName, "");
                 EasyExcel.read(mediaByObjectName, WxTrade.class, new WxTrackListener(caseId, esClient)).sheet().doRead();
-                mysqlDao.updateAnalysisStatusBtId(caseId, 3);
+                mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 3);
             }
 
 
             if (name.contains("扫码记录") && name.contains("xls")) {
+                mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 2);
                 InputStream mediaByObjectName = minioUtil.getMediaByObjectName(wosName, "");
                 EasyExcel.read(mediaByObjectName, b_jkbTrack.class, new b_jkbTrackListener(caseId, esClient)).sheet("被扫码人查询结果").doRead();
-                mysqlDao.updateAnalysisStatusBtId(caseId, 3);
+                mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 3);
             }
 
 
@@ -119,6 +128,7 @@ public class testMysql {
 
 
             System.out.println("案例:" + stringCaseDetailInfoEntry);
+            System.out.println("正在跑:" + stringCaseDetailInfoEntry.getValue());
         }
 
         esClient.close();

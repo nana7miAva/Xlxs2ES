@@ -35,7 +35,7 @@ public class loadCaseInfoThread implements Runnable {
 
         while (true) {
             try {
-                Thread.sleep(10 * 1000);
+                Thread.sleep(1000 * 1000);
                 loadCaseInfo();
                 this.lastUpdateTime = getBeforeTime(5);
             } catch (InterruptedException e) {
@@ -71,7 +71,7 @@ public class loadCaseInfoThread implements Runnable {
 
                 for (CaseDetailInfo detailInfo : caseDetailInfo) {
 
-                MemoryCache.schemeCache.put(caseInfo.getCaseId(), detailInfo);
+                MemoryCache.schemeCache.put(detailInfo.getCaseDetailId(), detailInfo);
                 }
             }
 

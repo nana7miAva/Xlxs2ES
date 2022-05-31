@@ -25,7 +25,7 @@
 
 
     <update id="updateAnalysisStatusBtId">
-        update case_detail_info set analysis_status = #{status} where case_id = #{caseId}
+        update case_detail_info set analysis_status = #{status} where case_detail_id = #{caseId}
     </update>
 
 </mapper>
