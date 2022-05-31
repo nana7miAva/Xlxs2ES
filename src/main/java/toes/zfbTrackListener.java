@@ -26,11 +26,11 @@ public class zfbTrackListener extends AnalysisEventListener<zfbTrack> {
         toJSON.put("ownerID","zfb从mysql读任务id");
 
         toJSON.put("startTime",toJSON.getString("zfb_pay_date"));
-        //toJSON.put("addressSource","");
+        toJSON.put("addressSource","支付宝");
         //toJSON.put("addressFromTable","");
 
         RestHighLevelClient esClient = creatEs.createEsClient();
-        IndexRequest request = new IndexRequest("flow_test");
+        IndexRequest request = new IndexRequest("flow_test2");
 
         request.timeout(TimeValue.timeValueSeconds(1));
         request.timeout("1s");

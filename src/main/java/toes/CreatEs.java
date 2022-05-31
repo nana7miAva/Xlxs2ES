@@ -19,9 +19,9 @@ public class CreatEs {
         RestClientBuilder restClientBuilder = RestClient.builder(
                 new HttpHost("172.16.10.49", 9200, "http"));
         RestHighLevelClient restHighLevelClient = new RestHighLevelClient(restClientBuilder);
-        GetIndexRequest getIndexRequest = new GetIndexRequest("flow_test");
-        //boolean exists = restHighLevelClient.indices().exists(getIndexRequest, RequestOptions.DEFAULT);
-        //System.out.println(exists);
+        GetIndexRequest getIndexRequest = new GetIndexRequest("flow_test2");
+        boolean exists = restHighLevelClient.indices().exists(getIndexRequest, RequestOptions.DEFAULT);
+        System.out.println(exists);
 
 
         return restHighLevelClient;

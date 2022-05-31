@@ -29,16 +29,17 @@ public class jzTrackListener extends AnalysisEventListener<jzTrack> {
         JSONObject toJSON = (JSONObject) JSONObject.toJSON(jzTrack);
 
         RestHighLevelClient esClient = creatEs.createEsClient();
-        IndexRequest request = new IndexRequest("flow_test");
+        IndexRequest request = new IndexRequest("flow_test2");
+
 
         toJSON.put("caseID","jz从mysql读任务id"); //从mysql库查询添加
         toJSON.put("ownerID","jz从mysql读任务id");
         toJSON.put("addressSource","基站");
-        toJSON.put("addressFromTable",toJSON.getString("jz_location"));
+        toJSON.put("addressFromTable",toJSON.getString("location"));
 
         toJSON.put("jz_begin_date", toJSON.getString("begin_date"));
         toJSON.put("jz_end_date", toJSON.getString("end_date"));
-        toJSON.put("jz_location", toJSON.getString("jz_location"));
+        toJSON.put("jz_location", toJSON.getString("location"));
 
         request.timeout(TimeValue.timeValueSeconds(1));
         request.timeout("1s");

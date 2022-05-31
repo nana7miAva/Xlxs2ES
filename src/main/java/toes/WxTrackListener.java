@@ -25,12 +25,12 @@ public class WxTrackListener extends AnalysisEventListener<WxTrade> {
         toJSON.put("caseID","wx从MySQL关联查询"); //从mysql库查询添加
         toJSON.put("ownerID","wx从MySQL关联查询");
         toJSON.put("startTime",toJSON.getString("wx_pay_date"));
-        //toJSON.put("addressSource","");
+        toJSON.put("addressSource","微信");
         //toJSON.put("addressFromTable","");
 
 
         RestHighLevelClient esClient = creatEs.createEsClient();
-        IndexRequest request = new IndexRequest("flow_test");
+        IndexRequest request = new IndexRequest("flow_test2");
 
         request.timeout(TimeValue.timeValueSeconds(1));
         request.timeout("1s");

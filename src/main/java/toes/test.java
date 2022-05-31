@@ -39,10 +39,10 @@ public class test {
         //EasyExcel.read(new File(wx), WxTrade.class, new WxTrackListener()).sheet().doRead();
 
         //公交
-        EasyExcel.read(new File(bus), BusFlow.class, new BusFlowListener()).headRowNumber(4).sheet().doRead();
+        //EasyExcel.read(new File(bus), BusFlow.class, new BusFlowListener()).headRowNumber(4).sheet().doRead();
 
         //被扫记录
-        //EasyExcel.read(new File(b_jkb), b_jkbTrack.class, new b_jkbTrackListener()).sheet("被扫码人查询结果").doRead();
+        EasyExcel.read(new File(b_jkb), b_jkbTrack.class, new b_jkbTrackListener()).sheet("被扫码人查询结果").doRead();
 
     }
 }
