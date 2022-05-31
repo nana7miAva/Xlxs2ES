@@ -49,8 +49,6 @@ public class zfbTrackListener extends AnalysisEventListener<zfbTrack> {
         IndexResponse indexResponse = restHighLevelClient.index(request, RequestOptions.DEFAULT);
 
 
-        //System.out.println(toJSON);
-
     }
 
     @Override
@@ -60,3 +58,4 @@ public class zfbTrackListener extends AnalysisEventListener<zfbTrack> {
 
 
 }
+//System.out.println(toJSON);
