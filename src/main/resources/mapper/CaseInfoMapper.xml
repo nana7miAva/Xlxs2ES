@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.CaseInfoMapper">
+    <select id="getAllCaseInfo"  resultType="entity.CaseInfo" flushCache="true" useCache="false">
+        select *
+        from case_info
+          and word_status = 3 and excel_status = 1 order by update_time asc limit 100
+    </select>
+
+    <select id="getAllCaseInfoByTime" resultType="entity.CaseInfo" flushCache="true" useCache="false">
+        select *
+        from case_info
+        where  update_time > #{updateTime}
+          and word_status = 3 and excel_status = 1
+        order by update_time asc limit 100
+    </select>
+</mapper>

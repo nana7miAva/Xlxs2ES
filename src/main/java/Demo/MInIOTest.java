@@ -2,13 +2,7 @@ package Demo;
 
 import Utils.MinioUtil;
 import com.alibaba.excel.EasyExcel;
-import org.apache.http.HttpHost;
-import org.elasticsearch.client.RequestOptions;
-import org.elasticsearch.client.RestClient;
-import org.elasticsearch.client.RestClientBuilder;
-import org.elasticsearch.client.RestHighLevelClient;
-import org.elasticsearch.client.indices.GetIndexRequest;
-import toes.CreatEs;
+
 import toes.jzTrack;
 import toes.jzTrackListener;
 
@@ -19,6 +13,7 @@ import java.net.URI;
 public class MInIOTest {
     public static void main(String[] args) throws Exception {
 
+        //从mysql拿到对应的wosName 最好还有任务名称
         String wosName = "609c9fd9b13659be349b5eb3c7c5ef65.xlsx";
         MinioUtil minioUtil = new MinioUtil();
 
