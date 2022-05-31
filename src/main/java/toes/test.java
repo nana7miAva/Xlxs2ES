@@ -27,7 +27,7 @@ public class test {
         //ArrayList<jzTrack> jz = new ArrayList<>();
 
         //基站
-        //EasyExcel.read(new File(jz), jzTrack.class, new jzTrackListener()).sheet("压缩结果").doRead();
+        EasyExcel.read(new File(jz), jzTrack.class, new jzTrackListener()).sheet("压缩结果").doRead();
 
         //健康宝
         //EasyExcel.read(new File(jkb), jkbTrack.class, new jkbTrackListener()).sheet("扫码人查询结果").doRead();
@@ -42,7 +42,7 @@ public class test {
         //EasyExcel.read(new File(bus), BusFlow.class, new BusFlowListener()).headRowNumber(4).sheet().doRead();
 
         //被扫记录
-        EasyExcel.read(new File(b_jkb), b_jkbTrack.class, new b_jkbTrackListener()).sheet("被扫码人查询结果").doRead();
+        //EasyExcel.read(new File(b_jkb), b_jkbTrack.class, new b_jkbTrackListener()).sheet("被扫码人查询结果").doRead();
 
     }
 }

@@ -27,7 +27,7 @@ public class jzTrackListener extends AnalysisEventListener<jzTrack> {
 
         CreatEs creatEs = new CreatEs();
         JSONObject toJSON = (JSONObject) JSONObject.toJSON(jzTrack);
-
+        System.out.println(toJSON);
         RestHighLevelClient esClient = creatEs.createEsClient();
         IndexRequest request = new IndexRequest("flow_test2");
 
@@ -45,10 +45,10 @@ public class jzTrackListener extends AnalysisEventListener<jzTrack> {
         request.timeout("1s");
         request.source(toJSON, XContentType.JSON);
 
-        IndexResponse indexResponse = esClient.index(request, RequestOptions.DEFAULT);
+        //IndexResponse indexResponse = esClient.index(request, RequestOptions.DEFAULT);
 
-        esClient.close();
-        //System.out.println(toJSON);
+        //esClient.close();
+
     }
 
     //读取表头内容
