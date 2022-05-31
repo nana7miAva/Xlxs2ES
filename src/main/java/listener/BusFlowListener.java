@@ -58,11 +58,11 @@ public class BusFlowListener extends AnalysisEventListener<BusFlow> {
         if (toJSON1.getInteger("bus_pay_platform_id").equals(toJSON1.getInteger("bus_tag_platform_id"))) {
 
             //增加两个key
-            toJSON1.put("caseID", "bus从mysql添加"); //从mysql库查询添加
+            toJSON1.put("caseID", caseID); //从mysql库查询添加
             //toJSON1.put("ownerID","");
             toJSON1.put("startTime", toJSON1.getString("bus_trad_date"));
             toJSON1.put("addressSource", "公交");
-            toJSON2.put("caseID", "bus从mysql添加");
+            toJSON2.put("caseID", caseID);
             //toJSON2.put("ownerID","");
             toJSON2.put("startTime", toJSON2.getString("bus_trad_date"));
             toJSON2.put("addressSource", "公交");
@@ -100,17 +100,17 @@ public class BusFlowListener extends AnalysisEventListener<BusFlow> {
             //车辆号+其余信息
 
             //增加两个key
-            toJSON1.put("caseID", "bus从mysql添加"); //从mysql库查询添加
+            toJSON1.put("caseID", caseID); //从mysql库查询添加
             //toJSON1.put("ownerID","");
             toJSON1.put("startTime", toJSON1.getString("bus_trad_date"));
             toJSON1.put("addressSource", "公交");
             //
-            toJSON2.put("caseID", "bus从mysql添加");
+            toJSON2.put("caseID", caseID);
             //toJSON2.put("ownerID","");
             toJSON2.put("startTime", toJSON2.getString("bus_trad_date"));
             toJSON2.put("addressSource", "公交");
 
-            toJSON3.put("caseID", "bus从mysql添加");
+            toJSON3.put("caseID", caseID);
             //toJSON3.put("ownerID","");
             toJSON3.put("startTime", toJSON3.getString("bus_trad_date"));
             toJSON3.put("addressSource", "公交");

@@ -45,8 +45,8 @@ public class MysqlDao {
 
     }
 
-    public CaseDetailInfo getCaseDetailInfo(String caseDetailId) {
-        CaseDetailInfo caseDetailInfos = caseDetailInfoMapper.getAllDetailDataById(caseDetailId);
+    public List<CaseDetailInfo> getCaseDetailInfo(String caseDetailId) {
+        List<CaseDetailInfo> caseDetailInfos = caseDetailInfoMapper.getAllDetailDataById(caseDetailId);
         return caseDetailInfos;
     }
 
@@ -59,6 +59,19 @@ public class MysqlDao {
         list = caseInfoMapper.getAllCaseInfo();
 
         return list;
+    }
+
+
+    public boolean updateExcelStatusBtId(String caseId,int excelStatus){
+        boolean b = caseInfoMapper.updateExcelStatusBtId(caseId, excelStatus);
+
+        return b;
+    }
+
+    public boolean updateAnalysisStatusBtId(String caseId,int analysisStatus){
+        boolean b = caseDetailInfoMapper.updateAnalysisStatusBtId(caseId, analysisStatus);
+
+        return b;
     }
 
 }

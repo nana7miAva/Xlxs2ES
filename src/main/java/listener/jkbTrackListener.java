@@ -31,8 +31,8 @@ public class jkbTrackListener extends AnalysisEventListener<jkbTrack> {
         JSONObject toJSON = (JSONObject) JSONObject.toJSON(jkbTrack);
 
         //增加两个key
-        toJSON.put("caseID", "jkb从mysql读任务id"); //从mysql库查询添加
-        toJSON.put("ownerID", "jkb从mysql读任务id");
+        toJSON.put("caseID", caseID); //从mysql库查询添加
+        toJSON.put("ownerID", caseID);
         toJSON.put("startTime", toJSON.getString("jkb_scan_date"));
         toJSON.put("addressSource", "阳性人员健康宝扫描");
         toJSON.put("addressFromTable", toJSON.getString("jkb_code_location"));

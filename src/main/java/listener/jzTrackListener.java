@@ -52,7 +52,7 @@ public class jzTrackListener extends AnalysisEventListener<jzTrack> {
 
         IndexResponse indexResponse = restHighLevelClient.index(request, RequestOptions.DEFAULT);
 
-        System.out.println("数据写入一行--------------------------------------------------------------------------------------------------");
+        System.out.println("jz数据写入一行--------------------------------------------------------------------------------------------------");
 
     }
 

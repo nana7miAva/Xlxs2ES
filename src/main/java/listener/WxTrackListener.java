@@ -30,8 +30,8 @@ public class WxTrackListener extends AnalysisEventListener<WxTrade> {
         JSONObject toJSON = (JSONObject) JSONObject.toJSON(wxTrade);
 
         //增加两个key
-        toJSON.put("caseID", "wx从MySQL关联查询"); //从mysql库查询添加
-        toJSON.put("ownerID", "wx从MySQL关联查询");
+        toJSON.put("caseID", caseID); //从mysql库查询添加
+        toJSON.put("ownerID", caseID);
         toJSON.put("startTime", toJSON.getString("wx_pay_date"));
         toJSON.put("addressSource", "微信");
         //toJSON.put("addressFromTable","");

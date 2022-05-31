@@ -1,6 +1,7 @@
 package mapper;
 
 import entity.CaseInfo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
 import java.util.List;
@@ -19,5 +20,8 @@ public interface CaseInfoMapper {
 
     //根据创建时间获取明细表全字段
     List<CaseInfo> getAllCaseInfoByTime(Date updateTime);
+
+    //更新任务状态
+    boolean updateExcelStatusBtId(@Param("caseId") String caseId, @Param("status") int status);
 
 }

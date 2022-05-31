@@ -6,11 +6,11 @@ import cache.MemoryCache;
 import com.alibaba.excel.EasyExcel;
 import entity.CaseDetailInfo;
 import listener.*;
+import mysql.MysqlDao;
 import org.elasticsearch.client.RestHighLevelClient;
 import thread.loadCaseInfoThread;
 import toes.*;
 
-import java.io.File;
 import java.io.InputStream;
 import java.util.Map;
 
@@ -21,50 +21,65 @@ import java.util.Map;
 public class testMysql {
     public static void main(String[] args) throws Exception {
 
+        MysqlDao mysqlDao = new MysqlDao();
+
         new Thread(new loadCaseInfoThread()).start();
 
 
         RestHighLevelClient esClient = new CreatEs().createEsClient();
         MinioUtil minioUtil = new MinioUtil();
         for (Map.Entry<String, CaseDetailInfo> stringCaseDetailInfoEntry : MemoryCache.schemeCache.entrySet()) {
+
+
             CaseDetailInfo value = stringCaseDetailInfoEntry.getValue();
             String caseId = value.getCaseId();
             String wosName = value.getWosName();
             String name = value.getName();//文件名称
 
+            mysqlDao.updateExcelStatusBtId(caseId, 2);
+
+            if (name.contains("支付宝") && name.contains("xls")) {
+                InputStream mediaByObjectName = minioUtil.getMediaByObjectName(wosName, "");
+                EasyExcel.read(mediaByObjectName, zfbTrack.class, new zfbTrackListener(caseId, esClient)).sheet("18701457955").doRead();
+                mysqlDao.updateAnalysisStatusBtId(caseId, 3);
+            }
+
             if (name.contains("JZ") && name.contains("xls")) {
                 InputStream mediaByObjectName = minioUtil.getMediaByObjectName(wosName, "");
                 EasyExcel.read(mediaByObjectName, jzTrack.class, new jzTrackListener(caseId, esClient)).sheet("压缩结果").doRead();
+                mysqlDao.updateAnalysisStatusBtId(caseId, 3);
+
             }
+
+
+
 
             if (name.contains("公交") && name.contains("xls")) {
                 InputStream mediaByObjectName = minioUtil.getMediaByObjectName(wosName, "");
-                EasyExcel.read(mediaByObjectName, BusFlow.class, new BusFlowListener()).headRowNumber(4).sheet().doRead();
+                EasyExcel.read(mediaByObjectName, BusFlow.class, new BusFlowListener(caseId, esClient)).headRowNumber(4).sheet().doRead();
+                mysqlDao.updateAnalysisStatusBtId(caseId, 3);
             }
 
             if (name.contains("健康宝") && name.contains("xls")) {
                 InputStream mediaByObjectName = minioUtil.getMediaByObjectName(wosName, "");
-                EasyExcel.read(mediaByObjectName, jkbTrack.class, new jkbTrackListener()).sheet("扫码人查询结果").doRead();
+                EasyExcel.read(mediaByObjectName, jkbTrack.class, new jkbTrackListener(caseId, esClient)).sheet("扫码人查询结果").doRead();
+                mysqlDao.updateAnalysisStatusBtId(caseId, 3);
             }
 
-            if (name.contains("支付宝") && name.contains("xls")) {
-                InputStream mediaByObjectName = minioUtil.getMediaByObjectName(wosName, "");
-                EasyExcel.read(mediaByObjectName, zfbTrack.class, new zfbTrackListener()).sheet("18701457955").doRead();
-            }
+
 
             if (name.contains("微信") && name.contains("xls")) {
                 InputStream mediaByObjectName = minioUtil.getMediaByObjectName(wosName, "");
-                EasyExcel.read(mediaByObjectName, WxTrade.class, new WxTrackListener()).sheet().doRead();
+                EasyExcel.read(mediaByObjectName, WxTrade.class, new WxTrackListener(caseId, esClient)).sheet().doRead();
+                mysqlDao.updateAnalysisStatusBtId(caseId, 3);
             }
 
 
             if (name.contains("扫码记录") && name.contains("xls")) {
                 InputStream mediaByObjectName = minioUtil.getMediaByObjectName(wosName, "");
-                EasyExcel.read(mediaByObjectName, b_jkbTrack.class, new b_jkbTrackListener()).sheet("被扫码人查询结果").doRead();
+                EasyExcel.read(mediaByObjectName, b_jkbTrack.class, new b_jkbTrackListener(caseId, esClient)).sheet("被扫码人查询结果").doRead();
+                mysqlDao.updateAnalysisStatusBtId(caseId, 3);
             }
-
-
-
 
 
             //String jz = "C:\\Users\\39067\\AppData\\Roaming\\Tencent\\WXWork\\Data\\1688856634259340\\Cache\\File\\2022-05\\JZ轨迹.xlsx";

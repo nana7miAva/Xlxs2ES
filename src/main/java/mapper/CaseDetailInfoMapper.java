@@ -25,8 +25,11 @@ public interface CaseDetailInfoMapper {
 
 
     //
-    CaseDetailInfo getAllDetailDataById(@Param("caseDetailId") String caseDetailId);
+    List<CaseDetailInfo> getAllDetailDataById(@Param("caseDetailId") String caseDetailId);
 
+
+    //更新任务状态
+    boolean updateAnalysisStatusBtId(@Param("caseId") String caseId, @Param("status") int status);
 
 
 }

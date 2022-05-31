@@ -20,7 +20,12 @@
     <select id="getAllDetailDataById"  resultType="entity.CaseDetailInfo" flushCache="true" useCache="false">
         select *
         from case_detail_info
-        where case_detail_id = #{caseDetailId}
+        where case_id = #{caseDetailId}
     </select>
+
+
+    <update id="updateAnalysisStatusBtId">
+        update case_detail_info set analysis_status = #{status} where case_id = #{caseId}
+    </update>
 
 </mapper>

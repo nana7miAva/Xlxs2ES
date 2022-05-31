@@ -32,8 +32,8 @@ public class zfbTrackListener extends AnalysisEventListener<zfbTrack> {
         JSONObject toJSON = (JSONObject) JSONObject.toJSON(zfbTrack);
 
         //增加两个key
-        toJSON.put("caseID", "zfb从mysql读任务id"); //从mysql库查询添加
-        toJSON.put("ownerID", "zfb从mysql读任务id");
+        toJSON.put("caseID", caseID); //从mysql库查询添加
+        toJSON.put("ownerID", caseID);
 
         toJSON.put("startTime", toJSON.getString("zfb_pay_date"));
         toJSON.put("addressSource", "支付宝");
@@ -47,6 +47,7 @@ public class zfbTrackListener extends AnalysisEventListener<zfbTrack> {
         request.source(toJSON, XContentType.JSON);
 
         IndexResponse indexResponse = restHighLevelClient.index(request, RequestOptions.DEFAULT);
+        System.out.println("支付宝数据写入一行----------------------------------------------------------------");
 
 
     }

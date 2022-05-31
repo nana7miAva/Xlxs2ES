@@ -32,7 +32,7 @@ public class b_jkbTrackListener extends AnalysisEventListener<b_jkbTrack> {
 
 
         //增加两个key
-        toJSON.put("caseID", "b_jkb从mysql读任务id"); //从mysql库查询添加
+        toJSON.put("caseID", caseID); //从mysql库查询添加
         //toJSON.put("ownerID","jkb从mysql读任务id");
         toJSON.put("startTime", toJSON.getString("jkb_scan_date"));
         toJSON.put("addressSource", "点位健康宝扫描");

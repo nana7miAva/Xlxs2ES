@@ -16,4 +16,9 @@
           and word_status = 3 and excel_status = 1
         order by update_time asc limit 100
     </select>
+
+
+    <update id="updateExcelStatusBtId">
+        update case_info set excel_status = #{status} where case_id = #{caseId}
+    </update>
 </mapper>
