@@ -45,9 +45,9 @@ public class jzTrackListener extends AnalysisEventListener<jzTrack> {
         request.timeout("1s");
         request.source(toJSON, XContentType.JSON);
 
-        //IndexResponse indexResponse = esClient.index(request, RequestOptions.DEFAULT);
+        IndexResponse indexResponse = esClient.index(request, RequestOptions.DEFAULT);
 
-        //esClient.close();
+        esClient.close();
 
     }
 
