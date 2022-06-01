@@ -30,7 +30,7 @@ public class testMysql {
         RestHighLevelClient esClient = new CreatEs().createEsClient();
         MinioUtil minioUtil = new MinioUtil();
         while (true) {
-            Thread.sleep(1000*30);
+
 
             for (Map.Entry<String, CaseDetailInfo> stringCaseDetailInfoEntry : MemoryCache.schemeCache.entrySet()) {
 
@@ -40,7 +40,7 @@ public class testMysql {
                 String caseId = value.getCaseId();
                 String wosName = value.getWosName();
                 String name = value.getName();//文件名称
-
+                String caseDetailId = value.getCaseDetailId();
 
                 if (value.getAnalysisStatus() != 1) {
                     continue;
@@ -103,8 +103,11 @@ public class testMysql {
 
 
                 System.out.println("案例:" + stringCaseDetailInfoEntry);
+                MemoryCache.schemeCache.remove(caseDetailId);
                 System.out.println("正在跑:" + stringCaseDetailInfoEntry.getValue());
+
             }
+            Thread.sleep(1000*30);
         }
 
         //esClient.close();

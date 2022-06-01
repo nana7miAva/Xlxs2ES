@@ -55,7 +55,7 @@ public class jzTrackListener extends AnalysisEventListener<jzTrack> {
 
         //IndexResponse indexResponse = restHighLevelClient.index(request, RequestOptions.DEFAULT);
 
-        System.out.println(toJSON);
+        //System.out.println(toJSON);
 
     }
 

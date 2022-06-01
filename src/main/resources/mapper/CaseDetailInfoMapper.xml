@@ -20,7 +20,7 @@
     <select id="getAllDetailDataById"  resultType="entity.CaseDetailInfo" flushCache="true" useCache="false">
         select *
         from case_detail_info
-        where case_id = #{caseDetailId}
+        where case_id = #{caseDetailId} and name like '%xls%'
     </select>
 
 
