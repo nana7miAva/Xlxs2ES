@@ -27,9 +27,14 @@ public interface CaseDetailInfoMapper {
     //
     List<CaseDetailInfo> getAllDetailDataById(@Param("caseDetailId") String caseDetailId);
 
+    //查询caseId 在 detail表中是否全部解析完成
+    List<CaseDetailInfo> getAllDetailDataByAnalysis(@Param("caseDetailId") String caseDetailId);
+
 
     //更新任务状态
     boolean updateAnalysisStatusBtId(@Param("caseId") String caseId, @Param("status") int status);
 
 
+  /*  //end
+    boolean updateEndExcelStatusBtId(@Param("caseId")String caseId, @Param("status")int analysisStatus);*/
 }

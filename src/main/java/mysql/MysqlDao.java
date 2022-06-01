@@ -74,4 +74,18 @@ public class MysqlDao {
         return b;
     }
 
+
+    //end
+    public boolean updateEndExcelStatusBtId(String caseId,int analysisStatus){
+        boolean b = caseInfoMapper.updateEndExcelStatusBtId(caseId, analysisStatus);
+
+        return b;
+    }
+
+    //
+    public List<CaseDetailInfo> getAllDetailDataByAnalysis(String caseId){
+        List<CaseDetailInfo> allDetailDataByAnalysis = caseDetailInfoMapper.getAllDetailDataByAnalysis(caseId);
+        return allDetailDataByAnalysis;
+    }
+
 }

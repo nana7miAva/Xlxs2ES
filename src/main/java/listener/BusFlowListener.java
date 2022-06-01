@@ -148,9 +148,9 @@ public class BusFlowListener extends AnalysisEventListener<BusFlow> {
             //标准化地址是否解析状态 1未解析3解析完成
             toJSON3.put("flow_map_status",1);
 
-            IndexRequest request1 = new IndexRequest("flow_test4");
-            IndexRequest request2 = new IndexRequest("flow_test4");
-            IndexRequest request3 = new IndexRequest("flow_test4");
+            IndexRequest request1 = new IndexRequest("flow_test5");
+            IndexRequest request2 = new IndexRequest("flow_test5");
+            IndexRequest request3 = new IndexRequest("flow_test5");
 
             request1.timeout(TimeValue.timeValueSeconds(1));
             request1.timeout("1s");

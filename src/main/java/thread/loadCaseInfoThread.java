@@ -1,14 +1,14 @@
 package thread;
 
 import cache.MemoryCache;
-import com.google.errorprone.annotations.Var;
+
 import entity.CaseDetailInfo;
 import entity.CaseInfo;
 import mysql.MysqlDao;
 
-import java.text.ParseException;
+
 import java.text.SimpleDateFormat;
-import java.time.OffsetDateTime;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +35,7 @@ public class loadCaseInfoThread implements Runnable {
 
         while (true) {
             try {
-                Thread.sleep(1000 * 1000);
+                Thread.sleep(10 * 1000);
                 loadCaseInfo();
                 this.lastUpdateTime = getBeforeTime(5);
             } catch (InterruptedException e) {

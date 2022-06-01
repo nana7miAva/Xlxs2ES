@@ -24,6 +24,13 @@
     </select>
 
 
+    <select id="getAllDetailDataByAnalysis"  resultType="entity.CaseDetailInfo" flushCache="true" useCache="false">
+        select *
+        from case_detail_info
+        where case_id = #{caseDetailId} and analysis_status != 3 and name like '%xls%'
+    </select>
+
+
     <update id="updateAnalysisStatusBtId">
         update case_detail_info set analysis_status = #{status} where case_detail_id = #{caseId}
     </update>

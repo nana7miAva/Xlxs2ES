@@ -34,7 +34,7 @@ public class jzTrackListener extends AnalysisEventListener<jzTrack> {
         JSONObject toJSON = (JSONObject) JSONObject.toJSON(jzTrack);
 
 
-        IndexRequest request = new IndexRequest("flow_test4");
+        IndexRequest request = new IndexRequest("flow_test5");
 
 
         toJSON.put("caseID", caseID); //从mysql库查询添加
@@ -53,7 +53,7 @@ public class jzTrackListener extends AnalysisEventListener<jzTrack> {
         request.timeout("1s");
         request.source(toJSON, XContentType.JSON);
 
-        IndexResponse indexResponse = restHighLevelClient.index(request, RequestOptions.DEFAULT);
+        //IndexResponse indexResponse = restHighLevelClient.index(request, RequestOptions.DEFAULT);
 
         System.out.println(toJSON);
 

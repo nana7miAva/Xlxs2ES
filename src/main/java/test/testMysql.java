@@ -12,6 +12,7 @@ import thread.loadCaseInfoThread;
 import toes.*;
 
 import java.io.InputStream;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -37,8 +38,6 @@ public class testMysql {
             String wosName = value.getWosName();
             String name = value.getName();//文件名称
 
-
-            mysqlDao.updateExcelStatusBtId(caseId, 2);
 
             if (value.getAnalysisStatus() != 1) {
                 continue;
@@ -90,6 +89,16 @@ public class testMysql {
             }
 
 
+            //根据caseId 查询detail表的excel文件状态
+            List<CaseDetailInfo> caseDetailInfo = mysqlDao.getAllDetailDataByAnalysis(caseId);
+
+            if (caseDetailInfo.size() == 0 || caseDetailInfo.isEmpty()) {
+                mysqlDao.updateExcelStatusBtId(caseId, 3);
+            } else {
+                mysqlDao.updateExcelStatusBtId(caseId, 2);
+            }
+
+
             //String jz = "C:\\Users\\39067\\AppData\\Roaming\\Tencent\\WXWork\\Data\\1688856634259340\\Cache\\File\\2022-05\\JZ轨迹.xlsx";
             //String b_jkb = "C:\\Users\\39067\\AppData\\Roaming\\Tencent\\WXWork\\Data\\1688856634259340\\Cache\\File\\2022-05\\新世界百货健康宝扫码记录.xlsx";
             //String jkb = "C:\\Users\\39067\\AppData\\Roaming\\Tencent\\WXWork\\Data\\1688856634259340\\Cache\\File\\2022-05\\健康宝.xlsx";
@@ -129,6 +138,7 @@ public class testMysql {
             System.out.println("案例:" + stringCaseDetailInfoEntry);
             System.out.println("正在跑:" + stringCaseDetailInfoEntry.getValue());
         }
+
 
         esClient.close();
     }

@@ -15,24 +15,7 @@
             <version>2.1.6</version>
         </dependency>
 
-        <!--<dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
-            <version>3.17</version>
-        </dependency>
 
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml-schemas</artifactId>
-            <version>3.17</version>
-        </dependency>-->
-
-        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
-        <!--<dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi</artifactId>
-            <version>3.17</version>
-        </dependency>-->
 
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -73,59 +56,85 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.28</version>
         </dependency>
-        <!-- minio -->
-        <dependency>
-            <groupId>tbase.wos.service</groupId>
-            <artifactId>tbase.wos.service</artifactId>
-            <version>0.0.2.huawei</version>
-        </dependency>
+
 
         <dependency>
-            <groupId>tbase.wos.service</groupId>
+            <groupId>com.wenge</groupId>
             <artifactId>tbase.wos.service</artifactId>
             <version>0.0.2.huawei</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/lib/tbase.wos.service-0.0.2.huawei.jar</systemPath>
+           <!-- <scope>system</scope>
+            <systemPath>${project.basedir}/lib/tbase.wos.service-0.0.2.huawei.jar</systemPath>-->
         </dependency>
 
     </dependencies>
 
-    <build>
+  <build>
+        <resources>
+            <resource>
+                <directory>${project.basedir}/lib</directory>
+                <targetPath>BOOT-INF/lib/</targetPath>
+                <filtering>false</filtering>
+                <includes>
+                    <include>**/*.jar</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
+
+
             <!--打入本地的jar-->
-            <plugin>
+            <!--<plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.5.4</version>
                 <configuration>
+                    <mainClass>test.testMysql</mainClass>
                     <includeSystemScope>true</includeSystemScope>
                 </configuration>
-            </plugin>
-            <!--打jar包-->
+            </plugin>-->
+
+
+            <!--将本附加模块的独有依赖和自身打成一个FatJar-->
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
+                    <!-- 启动类没有可以不用 -->
                     <archive>
                         <manifest>
-                            <mainClass>com.allen.capturewebdata.Main</mainClass>
+                            <mainClass>test.testMysql</mainClass>
                         </manifest>
                     </archive>
+                    <!-- Maven预先定义好的描述符有bin，src，project，jar-with-dependencies等。比较常用的是jar-with-dependencies，它是将所有外部依赖JAR都加入生成的JAR包中，比较傻瓜化。-->
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
+
                 </configuration>
+
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <!-- 绑定到package生命周期 -->
+                        <phase>package</phase>
+                        <goals>
+                            <!-- 只运行一次 -->
+                            <goal>single</goal>
+                        </goals>
+
+                    </execution>
+
+                </executions>
+
             </plugin>
 
-            <plugin>
+
+            <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>2.3</version>
@@ -137,17 +146,20 @@
                         </goals>
                         <configuration>
                             <transformers>
-                                <!--<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>flink.KafkaDemo1</mainClass>
-                                </transformer>-->
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>test.testMysql</mainClass>
+
+                                </transformer>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
                                     <resource>reference.conf</resource>
                                 </transformer>
                             </transformers>
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
 

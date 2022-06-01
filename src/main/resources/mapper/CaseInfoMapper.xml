@@ -21,4 +21,24 @@
     <update id="updateExcelStatusBtId">
         update case_info set excel_status = #{status} where case_id = #{caseId}
     </update>
+
+   <!-- end-->
+    <update id="updateEndExcelStatusBtId">
+UPDATE case_info a,
+case_detail_info b
+SET a.excel_status =  #{status}
+WHERE
+	b.case_id = #{caseId}
+	AND a.case_id = b.case_id
+	AND b.NAME LIKE "%xlsx%"
+	AND b.analysis_status = "3"
+	AND ( SELECT count(1) FROM case_detail_info b WHERE b.case_id = #{caseId} AND b.NAME LIKE "%xlsx%" AND b.analysis_status = "3" )=(
+	SELECT
+		count(1)
+	FROM
+		case_detail_info b
+	WHERE
+		b.case_id = #{caseId}
+	AND b.NAME LIKE "%xlsx%")
+</update>
 </mapper>

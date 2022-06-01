@@ -1,8 +1,10 @@
 package Demo;
 
+import Utils.CreatEs;
 import Utils.MinioUtil;
 import com.alibaba.excel.EasyExcel;
 
+import org.elasticsearch.client.RestHighLevelClient;
 import toes.jzTrack;
 import listener.jzTrackListener;
 
@@ -20,7 +22,9 @@ public class MInIOTest {
         InputStream mediaByObjectName = minioUtil.getMediaByObjectName(wosName, "");
 
 
-        //EasyExcel.read(mediaByObjectName, jzTrack.class, new jzTrackListener()).sheet("压缩结果").doRead();
+        CreatEs creatEs = new CreatEs();
+        RestHighLevelClient esClient = creatEs.createEsClient();
+        EasyExcel.read(mediaByObjectName, jzTrack.class, new jzTrackListener("1",esClient)).sheet("压缩结果").doRead();
 
 
     }
