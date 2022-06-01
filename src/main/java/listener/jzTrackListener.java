@@ -41,6 +41,8 @@ public class jzTrackListener extends AnalysisEventListener<jzTrack> {
         toJSON.put("ownerID", caseID);
         toJSON.put("addressSource", "基站");
         toJSON.put("addressFromTable", toJSON.getString("location"));
+        toJSON.put("startTime", toJSON.getString("begin_date"));
+        toJSON.put("endTime", toJSON.getString("end_date"));
 
         toJSON.put("jz_begin_date", toJSON.getString("begin_date"));
         toJSON.put("jz_end_date", toJSON.getString("end_date"));
@@ -53,7 +55,7 @@ public class jzTrackListener extends AnalysisEventListener<jzTrack> {
 
         IndexResponse indexResponse = restHighLevelClient.index(request, RequestOptions.DEFAULT);
 
-        //System.out.println(toJSON);
+        System.out.println(toJSON);
 
     }
 

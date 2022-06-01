@@ -18,23 +18,268 @@
   "jkb_code_number": "11010518"
 }
 
+公交：
+2：
+{
+  "bus_pay_sh": "0",
+  "bus_type": "0",
+  "bus_pay_type": "BB--助残卡、敬老卡上车",
+  "bus_pay_platform_id": "8",
+  "bus_tag_date": "2022-04-18 21:15:00",
+  "bus_tag_platform_id": "8",
+  "bus_trad_number": "2060",
+  "flow_map_status": 1,
+  "bus_check_id": "00000000",
+  "addressFromTable": "农光东里",
+  "bus_pay_ys": "0",
+  "startTime": "2022-04-18 21:15:59",
+  "bus_pay_platform_name": "农光东里",
+  "bus_pay_yu": "3",
+  "bus_trad_date": "2022-04-18 21:15:59",
+  "bus_tag_platform_name": "农光东里",
+  "bus_card_type": "10--养老助残卡",
+  "bus_line_name": "98路",
+  "addressSource": "公交",
+  "bus_driver_id": "07007959",
+  "caseID": "833ba96f0ee747f7b8fd6af716ab7500",
+  "bus_direc": "1--上行",
+  "bus_number": "00029326"
+}
 
-111111111111111111{"bus_pay_sh":"0","bus_type":"0","bus_pay_type":"BB--助残卡、敬老卡上车","bus_pay_platform_id":"8","bus_tag_date":"2022-04-18 21:15:00","bus_tag_platform_id":"8","bus_trad_number":"2060","flow_map_status":1,"bus_check_id":"00000000","addressFromTable":"00029326","bus_pay_ys":"0","startTime":"2022-04-18 21:15:59","bus_pay_platform_name":"农光东里","bus_pay_yu":"3","bus_trad_date":"2022-04-18 21:15:59","bus_tag_platform_name":"农光东里","bus_card_type":"10--养老助残卡","bus_line_name":"98路","addressSource":"公交","bus_driver_id":"07007959","caseID":"833ba96f0ee747f7b8fd6af716ab7500","bus_direc":"1--上行","bus_number":"00029326"}
-222222222222222222{"bus_pay_sh":"0","bus_type":"0","bus_pay_type":"BB--助残卡、敬老卡上车","bus_pay_platform_id":"8","bus_tag_date":"2022-04-18 21:15:00","bus_tag_platform_id":"8","bus_trad_number":"2060","flow_map_status":1,"bus_check_id":"00000000","addressFromTable":"农光东里","bus_pay_ys":"0","startTime":"2022-04-18 21:15:59","bus_pay_platform_name":"农光东里","bus_pay_yu":"3","bus_trad_date":"2022-04-18 21:15:59","bus_tag_platform_name":"农光东里","bus_card_type":"10--养老助残卡","bus_line_name":"98路","addressSource":"公交","bus_driver_id":"07007959","caseID":"833ba96f0ee747f7b8fd6af716ab7500","bus_direc":"1--上行","bus_number":"00029326"}
-1{"bus_pay_sh":"0","bus_type":"0","bus_pay_type":"BC--助残卡、敬老卡消费","bus_pay_platform_id":"6","bus_tag_date":"2022-04-18 21:15:00","bus_tag_platform_id":"8","bus_trad_number":"2061","flow_map_status":1,"bus_check_id":"00000000","addressFromTable":"00029326","bus_pay_ys":"2","startTime":"2022-04-18 21:19:00","bus_pay_platform_name":"武圣路","bus_pay_yu":"3","bus_trad_date":"2022-04-18 21:19:00","bus_tag_platform_name":"农光东里","bus_card_type":"10--养老助残卡","bus_line_name":"98路","addressSource":"公交","bus_driver_id":"07007959","caseID":"833ba96f0ee747f7b8fd6af716ab7500","bus_direc":"1--上行","bus_number":"00029326"}
-2{"bus_pay_sh":"0","bus_type":"0","bus_pay_type":"BC--助残卡、敬老卡消费","bus_pay_platform_id":"6","bus_tag_date":"2022-04-18 21:15:00","bus_tag_platform_id":"8","bus_trad_number":"2061","flow_map_status":1,"bus_check_id":"00000000","addressFromTable":"农光东里","bus_pay_ys":"2","startTime":"2022-04-18 21:19:00","bus_pay_platform_name":"武圣路","bus_pay_yu":"3","bus_trad_date":"2022-04-18 21:19:00","bus_tag_platform_name":"农光东里","bus_card_type":"10--养老助残卡","bus_line_name":"98路","addressSource":"公交","bus_driver_id":"07007959","caseID":"833ba96f0ee747f7b8fd6af716ab7500","bus_direc":"1--上行","bus_number":"00029326"}
-3{"bus_pay_sh":"0","bus_type":"0","bus_pay_type":"BC--助残卡、敬老卡消费","bus_pay_platform_id":"6","bus_tag_date":"2022-04-18 21:15:00","bus_tag_platform_id":"8","bus_trad_number":"2061","flow_map_status":1,"bus_check_id":"00000000","addressFromTable":"武圣路","bus_pay_ys":"2","startTime":"2022-04-18 21:19:00","bus_pay_platform_name":"武圣路","bus_pay_yu":"3","bus_trad_date":"2022-04-18 21:19:00","bus_tag_platform_name":"农光东里","bus_card_type":"10--养老助残卡","bus_line_name":"98路","addressSource":"公交","bus_driver_id":"07007959","caseID":"833ba96f0ee747f7b8fd6af716ab7500","bus_direc":"1--上行","bus_number":"00029326"}
+{
+  "bus_pay_sh": "0",
+  "bus_type": "0",
+  "bus_pay_type": "BB--助残卡、敬老卡上车",
+  "bus_pay_platform_id": "8",
+  "bus_tag_date": "2022-04-18 21:15:00",
+  "bus_tag_platform_id": "8",
+  "bus_trad_number": "2060",
+  "flow_map_status": 1,
+  "bus_check_id": "00000000",
+  "addressFromTable": "00029326",
+  "bus_pay_ys": "0",
+  "startTime": "2022-04-18 21:15:59",
+  "bus_pay_platform_name": "农光东里",
+  "bus_pay_yu": "3",
+  "bus_trad_date": "2022-04-18 21:15:59",
+  "bus_tag_platform_name": "农光东里",
+  "bus_card_type": "10--养老助残卡",
+  "bus_line_name": "98路",
+  "addressSource": "公交",
+  "bus_driver_id": "07007959",
+  "caseID": "833ba96f0ee747f7b8fd6af716ab7500",
+  "bus_direc": "1--上行",
+  "bus_number": "00029326"
+}
 
+3：
+{
+  "bus_pay_sh": "0",
+  "bus_type": "0",
+  "bus_pay_type": "BC--助残卡、敬老卡消费",
+  "bus_pay_platform_id": "6",
+  "bus_tag_date": "2022-04-18 21:15:00",
+  "bus_tag_platform_id": "8",
+  "bus_trad_number": "2061",
+  "flow_map_status": 1,
+  "bus_check_id": "00000000",
+  "addressFromTable": "00029326",
+  "bus_pay_ys": "2",
+  "startTime": "2022-04-18 21:19:00",
+  "bus_pay_platform_name": "武圣路",
+  "bus_pay_yu": "3",
+  "bus_trad_date": "2022-04-18 21:19:00",
+  "bus_tag_platform_name": "农光东里",
+  "bus_card_type": "10--养老助残卡",
+  "bus_line_name": "98路",
+  "addressSource": "公交",
+  "bus_driver_id": "07007959",
+  "caseID": "833ba96f0ee747f7b8fd6af716ab7500",
+  "bus_direc": "1--上行",
+  "bus_number": "00029326"
+}
+{
+  "bus_pay_sh": "0",
+  "bus_type": "0",
+  "bus_pay_type": "BC--助残卡、敬老卡消费",
+  "bus_pay_platform_id": "6",
+  "bus_tag_date": "2022-04-18 21:15:00",
+  "bus_tag_platform_id": "8",
+  "bus_trad_number": "2061",
+  "flow_map_status": 1,
+  "bus_check_id": "00000000",
+  "addressFromTable": "农光东里",
+  "bus_pay_ys": "2",
+  "startTime": "2022-04-18 21:19:00",
+  "bus_pay_platform_name": "武圣路",
+  "bus_pay_yu": "3",
+  "bus_trad_date": "2022-04-18 21:19:00",
+  "bus_tag_platform_name": "农光东里",
+  "bus_card_type": "10--养老助残卡",
+  "bus_line_name": "98路",
+  "addressSource": "公交",
+  "bus_driver_id": "07007959",
+  "caseID": "833ba96f0ee747f7b8fd6af716ab7500",
+  "bus_direc": "1--上行",
+  "bus_number": "00029326"
+}
 
-{"jkb_scan_date":"2022-04-22 09:41:42","ownerID":"833ba96f0ee747f7b8fd6af716ab7500","jkb_code_type":"weixin","jkb_code":"weixin_20200628153635_11022819620105644X","addressSource":"阳性人员健康宝扫描","flow_map_status":1,"addressFromTable":"北京市密云区石城镇石塘路村桃花地口子","jkb_code_color":"绿色","caseID":"833ba96f0ee747f7b8fd6af716ab7500","jkb_code_location":"北京市密云区石城镇石塘路村桃花地口子","jkb_code_unit":"北京王桂连超市","startTime":"2022-04-22 09:41:42","jkb_code_number":"11011816"}
+{
+  "bus_pay_sh": "0",
+  "bus_type": "0",
+  "bus_pay_type": "BC--助残卡、敬老卡消费",
+  "bus_pay_platform_id": "6",
+  "bus_tag_date": "2022-04-18 21:15:00",
+  "bus_tag_platform_id": "8",
+  "bus_trad_number": "2061",
+  "flow_map_status": 1,
+  "bus_check_id": "00000000",
+  "addressFromTable": "武圣路",
+  "bus_pay_ys": "2",
+  "startTime": "2022-04-18 21:19:00",
+  "bus_pay_platform_name": "武圣路",
+  "bus_pay_yu": "3",
+  "bus_trad_date": "2022-04-18 21:19:00",
+  "bus_tag_platform_name": "农光东里",
+  "bus_card_type": "10--养老助残卡",
+  "bus_line_name": "98路",
+  "addressSource": "公交",
+  "bus_driver_id": "07007959",
+  "caseID": "833ba96f0ee747f7b8fd6af716ab7500",
+  "bus_direc": "1--上行",
+  "bus_number": "00029326"
+}
+jkb
+{
+  "jkb_scan_date": "2022-04-22 09:41:42",
+  "ownerID": "833ba96f0ee747f7b8fd6af716ab7500",
+  "jkb_code_type": "weixin",
+  "jkb_code": "weixin_20200628153635_11022819620105644X",
+  "addressSource": "阳性人员健康宝扫描",
+  "flow_map_status": 1,
+  "addressFromTable": "北京市密云区石城镇石塘路村桃花地口子",
+  "jkb_code_color": "绿色",
+  "caseID": "833ba96f0ee747f7b8fd6af716ab7500",
+  "jkb_code_location": "北京市密云区石城镇石塘路村桃花地口子",
+  "jkb_code_unit": "北京王桂连超市",
+  "startTime": "2022-04-22 09:41:42",
+  "jkb_code_number": "11011816"
+}
+jz
+{
+  "end_date": "2022-04-21 14:37:20",
+  "jz_location": "朝阳十八里店北桥",
+  "begin_date": "2022-04-21 14:35:23",
+  "jz_end_date": "2022-04-21 14:37:20",
+  "ownerID": "833ba96f0ee747f7b8fd6af716ab7500",
+  "addressSource": "基站",
+  "flow_map_status": 1,
+  "addressFromTable": "朝阳十八里店北桥",
+  "caseID": "833ba96f0ee747f7b8fd6af716ab7500",
+  "jz_begin_date": "2022-04-21 14:35:23",
+  "location": "朝阳十八里店北桥",
+  "startTime": "2022-04-21 14:35:23",
+  "endTime": "2022-04-21 14:37:20"
+}
 
-{"end_date":"2022-04-21 14:23:57","addressSource":"基站","jz_location":"丰台北空招待所","flow_map_status":1,"addressFromTable":"丰台北空招待所","begin_date":"2022-04-21 14:23:28","caseID":"833ba96f0ee747f7b8fd6af716ab7500","jz_begin_date":"2022-04-21 14:23:28","jz_end_date":"2022-04-21 14:23:57","location":"丰台北空招待所","ownerID":"833ba96f0ee747f7b8fd6af716ab7500"}
+{
+  "end_date": "2022-04-21 15:01:36",
+  "jz_location": "朝阳四方桥东南",
+  "begin_date": "2022-04-21 14:37:20",
+  "jz_end_date": "2022-04-21 15:01:36",
+  "ownerID": "833ba96f0ee747f7b8fd6af716ab7500",
+  "addressSource": "基站",
+  "flow_map_status": 1,
+  "addressFromTable": "朝阳四方桥东南",
+  "caseID": "833ba96f0ee747f7b8fd6af716ab7500",
+  "jz_begin_date": "2022-04-21 14:37:20",
+  "location": "朝阳四方桥东南",
+  "startTime": "2022-04-21 14:37:20",
+  "endTime": "2022-04-21 15:01:36"
+}
 
+weinxin
+{
+  "wx_remark2": "新同城-收派服务费",
+  "wx_order_num": "155031700122042110031141194894119575",
+  "wx_pay_type": "快捷支付",
+  "wx_payto_type": "消费",
+  "wx_user_bank_id": "2022042131420416400704710100402",
+  "wx_pay_date": "2022-04-21 13:00:56",
+  "wx_pay_number": "1284",
+  "flow_map_status": 1,
+  "wx_borr_type": "出",
+  "wx_user_banknum": "4984513107175501",
+  "startTime": "2022-04-21 13:00:56",
+  "ownerID": "833ba96f0ee747f7b8fd6af716ab7500",
+  "wx_user_yu": "0",
+  "addressSource": "微信",
+  "wx_user_id": "cby19880618",
+  "wx_face_id": "深圳市顺丰同城物流有限公司(1550317001)",
+  "caseID": "833ba96f0ee747f7b8fd6af716ab7500"
+}
 
+{
+  "wx_remark2": "京东-订单编号239701469461",
+  "wx_order_num": "123834250122042110031142226123564575",
+  "wx_pay_type": "快捷支付",
+  "wx_payto_type": "消费",
+  "wx_user_bank_id": "2022042131160465334473210210402",
+  "wx_pay_date": "2022-04-21 15:47:18",
+  "wx_pay_number": "29220",
+  "flow_map_status": 1,
+  "wx_borr_type": "出",
+  "wx_user_banknum": "4984513107175501",
+  "startTime": "2022-04-21 15:47:18",
+  "ownerID": "833ba96f0ee747f7b8fd6af716ab7500",
+  "wx_user_yu": "0",
+  "addressSource": "微信",
+  "wx_user_id": "cby19880618",
+  "wx_face_id": "江苏京东信息技术有限公司(1238342501)",
+  "caseID": "833ba96f0ee747f7b8fd6af716ab7500"
+}
 
-{"wx_remark2":"新同城-收派服务费","wx_order_num":"155031700122042110031141194894119575","wx_pay_type":"快捷支付","wx_payto_type":"消费","wx_user_bank_id":"2022042131420416400704710100402","wx_pay_date":"2022-04-21 13:00:56","wx_pay_number":"1284","flow_map_status":1,"wx_borr_type":"出","wx_user_banknum":"4984513107175501","startTime":"2022-04-21 13:00:56","ownerID":"833ba96f0ee747f7b8fd6af716ab7500","wx_user_yu":"0","addressSource":"微信","wx_user_id":"cby19880618","wx_face_id":"深圳市顺丰同城物流有限公司(1550317001)","caseID":"833ba96f0ee747f7b8fd6af716ab7500"}
-{"wx_remark2":"京东-订单编号239701469461","wx_order_num":"123834250122042110031142226123564575","wx_pay_type":"快捷支付","wx_payto_type":"消费","wx_user_bank_id":"2022042131160465334473210210402","wx_pay_date":"2022-04-21 15:47:18","wx_pay_number":"29220","flow_map_status":1,"wx_borr_type":"出","wx_user_banknum":"4984513107175501","startTime":"2022-04-21 15:47:18","ownerID":"833ba96f0ee747f7b8fd6af716ab7500","wx_user_yu":"0","addressSource":"微信","wx_user_id":"cby19880618","wx_face_id":"江苏京东信息技术有限公司(1238342501)","caseID":"833ba96f0ee747f7b8fd6af716ab7500"}
+zfb
+{
+  "zfb_pay_date": "2022-04-14 17:22:05",
+  "zfb_con_name": "宝宝爬行垫加厚婴儿家用爬爬垫折叠无毒无味夏季拼接儿童泡沫地垫",
+  "zfb_in_or_out": "支出",
+  "zfb_source_address": "TAOBAO",
+  "zfb_order_id": "T200P2575094400338643521",
+  "zfb_face_info": "2088341726145153（潍坊亨昌经贸有限公司）",
+  "zfb_pay_type": "交易成功结束",
+  "ownerID": "833ba96f0ee747f7b8fd6af716ab7500",
+  "zfb_inv": "18701457955",
+  "zfb_money": "28.00",
+  "addressSource": "支付宝",
+  "flow_map_status": 1,
+  "zfb_type": "担保交易",
+  "zfb_Modify_date": "2022-04-25 09:32:36",
+  "caseID": "833ba96f0ee747f7b8fd6af716ab7500",
+  "zfb_create_date": "2022-04-14 17:21:53",
+  "startTime": "2022-04-14 17:22:05",
+  "zfb_id": "2022041422001100971441331201",
+  "zfb_way": "招商银行（7242）"
+}
 
-
-{"zfb_pay_date":"2022-04-14 17:22:05","zfb_con_name":"宝宝爬行垫加厚婴儿家用爬爬垫折叠无毒无味夏季拼接儿童泡沫地垫","zfb_in_or_out":"支出","zfb_source_address":"TAOBAO","zfb_order_id":"T200P2575094400338643521","zfb_face_info":"2088341726145153（潍坊亨昌经贸有限公司）","zfb_pay_type":"交易成功结束","ownerID":"833ba96f0ee747f7b8fd6af716ab7500","zfb_inv":"18701457955","zfb_money":"28.00","addressSource":"支付宝","flow_map_status":1,"zfb_type":"担保交易","zfb_Modify_date":"2022-04-25 09:32:36","caseID":"833ba96f0ee747f7b8fd6af716ab7500","zfb_create_date":"2022-04-14 17:21:53","startTime":"2022-04-14 17:22:05","zfb_id":"2022041422001100971441331201","zfb_way":"招商银行（7242）"}
-{"zfb_pay_date":"2022-04-14 15:50:48","zfb_con_name":"费雪爬爬垫XPE加厚婴儿童环保宝宝爬行垫客厅家用无味泡沫游戏","zfb_in_or_out":"支出","zfb_source_address":"TAOBAO","zfb_order_id":"T200P2576810991550643521","zfb_face_info":"2088002659158886（陈婉诗）","zfb_pay_type":"交易中途关闭（未完成）","ownerID":"833ba96f0ee747f7b8fd6af716ab7500","zfb_inv":"18701457955","zfb_money":"50.00","addressSource":"支付宝","flow_map_status":1,"zfb_type":"担保交易","zfb_Modify_date":"2022-04-14 17:41:51","caseID":"833ba96f0ee747f7b8fd6af716ab7500","zfb_create_date":"2022-04-14 15:50:39","startTime":"2022-04-14 15:50:48","zfb_id":"2022041422001100971440547251","zfb_way":"招商银行（3903）"}
+{
+  "zfb_pay_date": "2022-04-14 15:50:48",
+  "zfb_con_name": "费雪爬爬垫XPE加厚婴儿童环保宝宝爬行垫客厅家用无味泡沫游戏",
+  "zfb_in_or_out": "支出",
+  "zfb_source_address": "TAOBAO",
+  "zfb_order_id": "T200P2576810991550643521",
+  "zfb_face_info": "2088002659158886（陈婉诗）",
+  "zfb_pay_type": "交易中途关闭（未完成）",
+  "ownerID": "833ba96f0ee747f7b8fd6af716ab7500",
+  "zfb_inv": "18701457955",
+  "zfb_money": "50.00",
+  "addressSource": "支付宝",
+  "flow_map_status": 1,
+  "zfb_type": "担保交易",
+  "zfb_Modify_date": "2022-04-14 17:41:51",
+  "caseID": "833ba96f0ee747f7b8fd6af716ab7500",
+  "zfb_create_date": "2022-04-14 15:50:39",
+  "startTime": "2022-04-14 15:50:48",
+  "zfb_id": "2022041422001100971440547251",
+  "zfb_way": "招商银行（3903）"
+}
