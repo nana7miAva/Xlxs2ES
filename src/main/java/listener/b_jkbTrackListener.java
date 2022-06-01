@@ -46,7 +46,7 @@ public class b_jkbTrackListener extends AnalysisEventListener<b_jkbTrack> {
         request.timeout("1s");
         request.source(toJSON, XContentType.JSON);
         IndexResponse indexResponse = restHighLevelClient.index(request, RequestOptions.DEFAULT);
-        System.out.println(toJSON);
+        //System.out.println(toJSON);
 
     }
 

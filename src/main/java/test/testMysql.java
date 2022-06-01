@@ -82,7 +82,6 @@ public class testMysql {
                 mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 3);
             }
 
-
             if (name.contains("扫码记录") && name.contains("xls")) {
                 mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 2);
                 InputStream mediaByObjectName = minioUtil.getMediaByObjectName(wosName, "");

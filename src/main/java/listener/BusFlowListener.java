@@ -174,7 +174,9 @@ public class BusFlowListener extends AnalysisEventListener<BusFlow> {
             IndexResponse indexResponse3 = restHighLevelClient.index(request3, RequestOptions.DEFAULT);
 
 
-            //System.out.println(toJSON);
+            //System.out.println("样例数据"+toJSON1);
+            //System.out.println("2"+toJSON2);
+            //System.out.println("3"+toJSON3);
         }
 
     }

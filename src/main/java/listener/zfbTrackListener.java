@@ -48,7 +48,7 @@ public class zfbTrackListener extends AnalysisEventListener<zfbTrack> {
         request.source(toJSON, XContentType.JSON);
 
         IndexResponse indexResponse = restHighLevelClient.index(request, RequestOptions.DEFAULT);
-        System.out.println("支付宝数据写入一行----------------------------------------------------------------");
+        //System.out.println(toJSON);
 
 
     }

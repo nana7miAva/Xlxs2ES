@@ -32,7 +32,7 @@ public class jzTrackListener extends AnalysisEventListener<jzTrack> {
 
 
         JSONObject toJSON = (JSONObject) JSONObject.toJSON(jzTrack);
-        System.out.println(toJSON);
+
 
         IndexRequest request = new IndexRequest("flow_test4");
 
@@ -53,7 +53,7 @@ public class jzTrackListener extends AnalysisEventListener<jzTrack> {
 
         IndexResponse indexResponse = restHighLevelClient.index(request, RequestOptions.DEFAULT);
 
-        System.out.println("jz数据写入一行--------------------------------------------------------------------------------------------------");
+        //System.out.println(toJSON);
 
     }
 

@@ -10,9 +10,9 @@
     <!-- 配置开发环境 -->
     <environments default="develop">
         <environment id="develop">
-            <!-- 1.1指定事务管理 将事物交给JDBC来管理 -->
+            <!-- 样例数据.1指定事务管理 将事物交给JDBC来管理 -->
             <transactionManager type="JDBC"/>
-            <!-- 1.2datasource(数据源/连接池，)指定链接数据库的基本信息 -->
+            <!-- 样例数据.2datasource(数据源/连接池，)指定链接数据库的基本信息 -->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
                 <property name="url" value="jdbc:mysql://172.16.10.51:3306/traceability_analysis_platform?characterEncoding=utf-8"/>

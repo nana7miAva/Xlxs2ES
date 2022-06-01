@@ -55,7 +55,7 @@ public class CaseDetailInfo implements Serializable {
     private String createUserId;
 
     /**
-     * 解析状态 1 未解析 2解析中
+     * 解析状态 样例数据 未解析 2解析中
      */
     private int analysisStatus;
 

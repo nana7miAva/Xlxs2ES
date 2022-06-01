@@ -49,7 +49,7 @@ public class jkbTrackListener extends AnalysisEventListener<jkbTrack> {
         IndexResponse indexResponse = restHighLevelClient.index(request, RequestOptions.DEFAULT);
 
 
-        System.out.println(toJSON);
+        //System.out.println(toJSON);
 
     }
 
