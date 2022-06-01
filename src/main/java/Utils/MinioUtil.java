@@ -27,8 +27,30 @@ import java.security.NoSuchAlgorithmException;
 
 public class MinioUtil {
 
+/*
+* # minio
+minio.ip=http://192.168.4.14
+minio.port=8091
+minio.access-key=minioadmin
+minio.secret-key=minioadmin
+minio.address=http://192.168.4.14:8091
+minio.https.address=http://192.168.4.14:8091
+minio.default-name=bucket-traceability*/
+
 
     private String defaultName="bucket-traceability";
+
+    private String ip="http://192.168.4.14";
+
+    private Integer port=8091;
+
+    private String accessKey="minioadmin";
+
+    private String secretKey="minioadmin";
+
+    private String address="http://192.168.4.14:8091";
+
+    /*private String defaultName="bucket-traceability";
 
     private String ip="http://172.16.10.61";
 
@@ -38,7 +60,7 @@ public class MinioUtil {
 
     private String secretKey="123@abc.com";
 
-    private String address="http://172.16.10.61:9000";
+    private String address="http://172.16.10.61:9000";*/
 
 
 

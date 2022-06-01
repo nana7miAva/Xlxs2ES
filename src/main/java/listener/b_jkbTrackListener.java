@@ -41,7 +41,7 @@ public class b_jkbTrackListener extends AnalysisEventListener<b_jkbTrack> {
         //标准化地址是否解析状态 1未解析3解析完成
         toJSON.put("flow_map_status",1);
 
-        IndexRequest request = new IndexRequest("flow_test5");
+        IndexRequest request = new IndexRequest("flow_investigation");
         request.timeout(TimeValue.timeValueSeconds(1));
         request.timeout("1s");
         request.source(toJSON, XContentType.JSON);
