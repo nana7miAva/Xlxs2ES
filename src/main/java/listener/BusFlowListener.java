@@ -4,6 +4,7 @@ import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
 import com.alibaba.fastjson.JSONObject;
 import lombok.SneakyThrows;
+import org.elasticsearch.action.bulk.BulkRequest;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.client.RequestOptions;
@@ -55,7 +56,7 @@ public class BusFlowListener extends AnalysisEventListener<BusFlow> {
         //如果标记站和交易站相等 就：
         //标记站，+其余信息
         //车辆号+其余信息
-        if (toJSON1.getInteger("bus_pay_platform_id").equals(toJSON1.getInteger("bus_tag_platform_id"))) {
+        if (toJSON1.getString("bus_pay_platform_id").equals(toJSON1.getString("bus_tag_platform_id"))) {
 
             //增加两个key
             toJSON1.put("caseID", caseID); //从mysql库查询添加
@@ -77,19 +78,39 @@ public class BusFlowListener extends AnalysisEventListener<BusFlow> {
             toJSON2.put("addressFromTable", toJSON2.getString("bus_tag_platform_name"));
             //toJSON3.put("addressFromTable", toJSON3.getString("bus_pay_platform_name"));
 
+            //标准化地址是否解析状态 1未解析3解析完成
+            toJSON1.put("flow_map_status",1);
+            //标准化地址是否解析状态 1未解析3解析完成
+            toJSON2.put("flow_map_status",1);
 
-            IndexRequest request = new IndexRequest("flow_test2");
+            IndexRequest request1 = new IndexRequest("flow_test2");
+            IndexRequest request2 = new IndexRequest("flow_test2");
 
-            request.timeout(TimeValue.timeValueSeconds(1));
-            request.timeout("1s");
-            request.source(toJSON1, XContentType.JSON);
-            request.source(toJSON2, XContentType.JSON);
+
+            request1.timeout(TimeValue.timeValueSeconds(1));
+            request1.timeout("1s");
+            request1.source(toJSON1, XContentType.JSON);
+
+
+            request2.timeout(TimeValue.timeValueSeconds(1));
+            request2.timeout("1s");
+
+            request2.source(toJSON2, XContentType.JSON);
+
             //request.source(toJSON3, XContentType.JSON);
 
-            IndexResponse indexResponse = restHighLevelClient.index(request, RequestOptions.DEFAULT);
+            /*BulkRequest bulkRequest = new BulkRequest();
+            bulkRequest.add(request1);
+            bulkRequest.add(request2);*/
 
 
-            //System.out.println(toJSON);
+            IndexResponse indexResponse1 = restHighLevelClient.index(request1, RequestOptions.DEFAULT);
+            IndexResponse indexResponse2 = restHighLevelClient.index(request2, RequestOptions.DEFAULT);
+
+
+            //System.out.println("111111111111111111"+toJSON1);
+            //System.out.println("222222222222222222"+toJSON2);
+            //System.out.println("333333333333333333"+toJSON3);
 
 
         } else {
@@ -120,16 +141,37 @@ public class BusFlowListener extends AnalysisEventListener<BusFlow> {
             toJSON2.put("addressFromTable", toJSON2.getString("bus_tag_platform_name"));
             toJSON3.put("addressFromTable", toJSON3.getString("bus_pay_platform_name"));
 
+            //标准化地址是否解析状态 1未解析3解析完成
+            toJSON1.put("flow_map_status",1);
+            //标准化地址是否解析状态 1未解析3解析完成
+            toJSON2.put("flow_map_status",1);
+            //标准化地址是否解析状态 1未解析3解析完成
+            toJSON3.put("flow_map_status",1);
 
-            IndexRequest request = new IndexRequest("flow_test2");
+            IndexRequest request1 = new IndexRequest("flow_test4");
+            IndexRequest request2 = new IndexRequest("flow_test4");
+            IndexRequest request3 = new IndexRequest("flow_test4");
 
-            request.timeout(TimeValue.timeValueSeconds(1));
-            request.timeout("1s");
-            request.source(toJSON1, XContentType.JSON);
-            request.source(toJSON2, XContentType.JSON);
-            request.source(toJSON3, XContentType.JSON);
+            request1.timeout(TimeValue.timeValueSeconds(1));
+            request1.timeout("1s");
+            request1.source(toJSON1, XContentType.JSON);
 
-            IndexResponse indexResponse = restHighLevelClient.index(request, RequestOptions.DEFAULT);
+
+            request2.timeout(TimeValue.timeValueSeconds(1));
+            request2.timeout("1s");
+
+            request2.source(toJSON2, XContentType.JSON);
+
+
+            request3.timeout(TimeValue.timeValueSeconds(1));
+            request3.timeout("1s");
+            request3.source(toJSON3, XContentType.JSON);
+
+
+
+            IndexResponse indexResponse1 = restHighLevelClient.index(request1, RequestOptions.DEFAULT);
+            IndexResponse indexResponse2 = restHighLevelClient.index(request2, RequestOptions.DEFAULT);
+            IndexResponse indexResponse3 = restHighLevelClient.index(request3, RequestOptions.DEFAULT);
 
 
             //System.out.println(toJSON);

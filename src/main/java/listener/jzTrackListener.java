@@ -34,7 +34,7 @@ public class jzTrackListener extends AnalysisEventListener<jzTrack> {
         JSONObject toJSON = (JSONObject) JSONObject.toJSON(jzTrack);
         System.out.println(toJSON);
 
-        IndexRequest request = new IndexRequest("flow_test2");
+        IndexRequest request = new IndexRequest("flow_test4");
 
 
         toJSON.put("caseID", caseID); //从mysql库查询添加
@@ -45,7 +45,8 @@ public class jzTrackListener extends AnalysisEventListener<jzTrack> {
         toJSON.put("jz_begin_date", toJSON.getString("begin_date"));
         toJSON.put("jz_end_date", toJSON.getString("end_date"));
         toJSON.put("jz_location", toJSON.getString("location"));
-
+//标准化地址是否解析状态 1未解析3解析完成
+        toJSON.put("flow_map_status",1);
         request.timeout(TimeValue.timeValueSeconds(1));
         request.timeout("1s");
         request.source(toJSON, XContentType.JSON);

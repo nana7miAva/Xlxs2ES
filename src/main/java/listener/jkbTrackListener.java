@@ -37,8 +37,10 @@ public class jkbTrackListener extends AnalysisEventListener<jkbTrack> {
         toJSON.put("addressSource", "阳性人员健康宝扫描");
         toJSON.put("addressFromTable", toJSON.getString("jkb_code_location"));
 
+           //标准化地址是否解析状态 1未解析3解析完成
+        toJSON.put("flow_map_status", 1);
 
-        IndexRequest request = new IndexRequest("flow_test2");
+        IndexRequest request = new IndexRequest("flow_test4");
 
         request.timeout(TimeValue.timeValueSeconds(1));
         request.timeout("1s");

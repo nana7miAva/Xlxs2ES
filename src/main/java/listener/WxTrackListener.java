@@ -35,9 +35,10 @@ public class WxTrackListener extends AnalysisEventListener<WxTrade> {
         toJSON.put("startTime", toJSON.getString("wx_pay_date"));
         toJSON.put("addressSource", "微信");
         //toJSON.put("addressFromTable","");
+//标准化地址是否解析状态 1未解析3解析完成
+        toJSON.put("flow_map_status",1);
 
-
-        IndexRequest request = new IndexRequest("flow_test2");
+        IndexRequest request = new IndexRequest("flow_test4");
 
         request.timeout(TimeValue.timeValueSeconds(1));
         request.timeout("1s");
