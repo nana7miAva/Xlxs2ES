@@ -37,7 +37,6 @@ minio.address=http://192.168.4.14:8091
 minio.https.address=http://192.168.4.14:8091
 minio.default-name=bucket-traceability*/
 
-
     private String defaultName="bucket-traceability";
 
     private String ip="http://192.168.4.14";
@@ -50,7 +49,7 @@ minio.default-name=bucket-traceability*/
 
     private String address="http://192.168.4.14:8091";
 
-    /*private String defaultName="bucket-traceability";
+/*    private String defaultName="bucket-traceability";
 
     private String ip="http://172.16.10.61";
 

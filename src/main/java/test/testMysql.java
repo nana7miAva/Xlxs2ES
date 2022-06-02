@@ -69,7 +69,7 @@ public class testMysql {
                     mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 3);
                 }
 
-                if (name.contains("健康宝") && name.contains("xls")) {
+                if (name.startsWith("健康宝") && name.contains("xls")) {
                     mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 2);
                     InputStream mediaByObjectName = minioUtil.getMediaByObjectName(wosName, "");
                     EasyExcel.read(mediaByObjectName, jkbTrack.class, new jkbTrackListener(caseId, esClient)).sheet("扫码人查询结果").doRead();
@@ -84,7 +84,7 @@ public class testMysql {
                     mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 3);
                 }
 
-                if (name.contains("扫码记录") && name.contains("xls")) {
+                if (name.contains("健康宝扫码") && name.contains("xls")) {
                     mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 2);
                     InputStream mediaByObjectName = minioUtil.getMediaByObjectName(wosName, "");
                     EasyExcel.read(mediaByObjectName, b_jkbTrack.class, new b_jkbTrackListener(caseId, esClient)).sheet("被扫码人查询结果").doRead();
