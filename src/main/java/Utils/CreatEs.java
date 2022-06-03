@@ -17,8 +17,8 @@ public class CreatEs {
     public RestHighLevelClient createEsClient() throws IOException {
 
         RestClientBuilder restClientBuilder = RestClient.builder(
-                //new HttpHost("172.16.10.49", 9200, "http"));
-                new HttpHost("192.168.4.15", 9200, "http"));
+                new HttpHost("172.16.10.49", 9200, "http"));
+                //new HttpHost("192.168.4.15", 9200, "http"));
         RestHighLevelClient restHighLevelClient = new RestHighLevelClient(restClientBuilder);
         GetIndexRequest getIndexRequest = new GetIndexRequest("flow_investigation");
         boolean exists = restHighLevelClient.indices().exists(getIndexRequest, RequestOptions.DEFAULT);
