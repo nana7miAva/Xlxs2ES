@@ -52,7 +52,6 @@ public class BusFlowListener extends AnalysisEventListener<BusFlow> {
         toJSON2.put("bus_tag_date", format1);
         toJSON3.put("bus_tag_date", format1);
 
-
         //如果标记站和交易站相等 就：
         //标记站，+其余信息
         //车辆号+其余信息

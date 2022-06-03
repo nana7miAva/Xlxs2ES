@@ -5,13 +5,13 @@
 <mapper namespace="mapper.CaseInfoMapper">
     <select id="getAllCaseInfo"  resultType="entity.CaseInfo" flushCache="true" useCache="false">
         select *
-        from case_info
+        from case_record
           where word_status = 3 and excel_status = 1 order by update_time asc limit 100
     </select>
 
     <select id="getAllCaseInfoByTime" resultType="entity.CaseInfo" flushCache="true" useCache="false">
         select *
-        from case_info
+        from case_record
         where  update_time > #{updateTime}
           and word_status = 3 and excel_status = 1
         order by update_time asc limit 100
@@ -19,12 +19,12 @@
 
 
     <update id="updateExcelStatusBtId">
-        update case_info set excel_status = #{status} where case_id = #{caseId}
+        update case_record set excel_status = #{status} where case_id = #{caseId}
     </update>
 
    <!-- end-->
     <update id="updateEndExcelStatusBtId">
-UPDATE case_info a,
+UPDATE case_record a,
 case_detail_info b
 SET a.excel_status =  #{status}
 WHERE
