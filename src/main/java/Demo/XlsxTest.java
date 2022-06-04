@@ -26,12 +26,12 @@ public class XlsxTest {
 
 
         File file2 = new File("C:\\Users\\39067\\AppData\\Roaming\\Tencent\\WXWork\\Data\\1688856634259340\\Cache\\File\\2022-06\\表B_落位.xlsx");
-        EasyExcel.read(file2, b_lwTrack.class, new b_lwTrackListener("123", esClient)).sheet().doRead();
+        //EasyExcel.read(file2, b_lwTrack.class, new b_lwTrackListener("123", esClient)).sheet().doRead();
 
         File file3 = new File("C:\\Users\\39067\\AppData\\Roaming\\Tencent\\WXWork\\Data\\1688856634259340\\Cache\\File\\2022-06\\表A.xlsx");
         //EasyExcel.read(file3, aTrack.class, new aTrackListener("123", esClient)).sheet().doRead();
 
         File file4 = new File("C:\\Users\\39067\\AppData\\Roaming\\Tencent\\WXWork\\Data\\1688856634259340\\Cache\\File\\2022-06\\G-石文军.xlsx");
-        //EasyExcel.read(file4, gTrack.class, new gTrackListener("123", esClient)).sheet().doRead();
+        EasyExcel.read(file4, gTrack.class, new gTrackListener("123", esClient)).sheet().doRead();
     }
 }

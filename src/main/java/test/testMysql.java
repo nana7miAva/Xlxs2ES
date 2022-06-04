@@ -92,13 +92,32 @@ public class testMysql {
                     mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 3);
                 }*/
 
-                if (name.contains("B") && name.contains("xls")) {
-                    //mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 2);
-                    //InputStream mediaByObjectName = minioUtil.getMediaByObjectName(wosName, "");
-                    //EasyExcel.read(mediaByObjectName, b_jkbTrack.class, new b_jkbTrackListener(caseId, esClient)).sheet("被扫码人查询结果").doRead();
-                    File file = new File("");
-                    EasyExcel.read(file, bTrack.class, new bTrackListener(caseId, esClient)).sheet("被扫码人查询结果").doRead();
-                    //mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 3);
+                if (name.contains("B") && name.contains("落位") && name.contains("xls")) {
+                    mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 2);
+                    InputStream mediaByObjectName = minioUtil.getMediaByObjectName(wosName, "");
+                    EasyExcel.read(mediaByObjectName, b_lwTrack.class, new b_lwTrackListener(caseId, esClient)).sheet().doRead();
+                    mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 3);
+                }
+
+                if (name.contains("B") && name.contains("落位") && name.contains("xls")) {
+                    mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 2);
+                    InputStream mediaByObjectName = minioUtil.getMediaByObjectName(wosName, "");
+                    EasyExcel.read(mediaByObjectName, bTrack.class, new bTrackListener(caseId, esClient)).sheet().doRead();
+                    mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 3);
+                }
+
+                if (name.contains("A") && name.contains("xls")) {
+                    mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 2);
+                    InputStream mediaByObjectName = minioUtil.getMediaByObjectName(wosName, "");
+                    EasyExcel.read(mediaByObjectName, aTrack.class, new aTrackListener(caseId, esClient)).sheet().doRead();
+                    mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 3);
+                }
+
+                if (name.contains("G") && name.contains("xls")) {
+                    mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 2);
+                    InputStream mediaByObjectName = minioUtil.getMediaByObjectName(wosName, "");
+                    EasyExcel.read(mediaByObjectName, gTrack.class, new gTrackListener(caseId, esClient)).sheet().doRead();
+                    mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 3);
                 }
 
 
@@ -117,7 +136,7 @@ public class testMysql {
                 System.out.println("正在跑:" + stringCaseDetailInfoEntry.getValue());
 
             }
-            Thread.sleep(1000*30);
+            Thread.sleep(1000 * 30);
         }
 
         //esClient.close();
