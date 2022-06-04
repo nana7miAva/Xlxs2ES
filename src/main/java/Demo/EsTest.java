@@ -7,13 +7,25 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
 import org.apache.http.nio.entity.NStringEntity;
 import org.apache.http.util.EntityUtils;
+import org.elasticsearch.action.search.ClearScrollRequest;
 import org.elasticsearch.action.search.SearchRequest;
+import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.action.search.SearchScrollRequest;
 import org.elasticsearch.client.*;
+import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.common.util.CollectionUtils;
+import org.elasticsearch.index.query.MatchAllQueryBuilder;
+import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.search.Scroll;
+import org.elasticsearch.search.SearchHit;
+import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import toes.SearchDsl;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class EsTest {
@@ -23,63 +35,85 @@ public class EsTest {
         //new HttpHost("192.168.4.15", 9200, "http"));
         RestHighLevelClient restHighLevelClient = new RestHighLevelClient(restClientBuilder);
 
-        RestClient build = restClientBuilder.build();
 
-        RestClient lowLevelClient = restHighLevelClient.getLowLevelClient();
-        String method = "POST";
-        String endpoint = "flow_investigation/_search";
-        String json = "{\n" +
-                "  \"query\": {\n" +
-                "    \"match\": {\n" +
-                "      \"caseID\": {\n" +
-                "        \"query\":\"281ecda3c4784375a63502e83a61b680\"\n" +
-                "      }\n" +
-                "    }\n" +
-                "  }\n" +
-                "}";
+        //selectData(restHighLevelClient);
 
-        NStringEntity nStringEntity = new NStringEntity(json);
-        Request request = new Request("POST", "flow_investigation/_doc/_search");
+        SearchRequest searchRequest = new SearchRequest();
+        searchRequest.indices("flow_investigation");
 
-        request.setEntity(nStringEntity);
-        Response response = build.performRequest(request);
-        //Response response = lowLevelClient.performRequest(request);
-        HttpEntity entity = response.getEntity();
+        SearchSourceBuilder query = new SearchSourceBuilder().query(QueryBuilders.termQuery("caseID","281ecda3c4784375a63502e83a61b680"));
+        //SearchSourceBuilder query = new SearchSourceBuilder().query(QueryBuilders.matchAllQuery());
+        searchRequest.source(query);
 
-        String resultS = EntityUtils.toString(entity);
-        System.out.println(JSON.parseObject(resultS));
+        SearchResponse search = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);
+        SearchHits hits = search.getHits();
 
 
+        System.out.println(hits.getTotalHits());
+        for (SearchHit hit : hits) {
+            System.out.println(hit.getSourceAsString());
+        }
+
+        restHighLevelClient.close();
     }
 
 
-   /* public static void queryByField(RestClient client) {
-        try{
-            String method = "POST";
-            String endpoint = "/book/it/_search";
-            HttpEntityentity = new NStringEntity("{\n" +
-                    "  \"query\":{\n" +
-                    "    \"match\":{\n" +
-                    "      \"name\":\"三\"\n" +
-                    "    }\n" +
-                    "  }\n" +
-                    "}", ContentType.APPLICATION_JSON);
-            Requestrequest = new Request(method, endpoint);
-            request.setEntity(entity);
-            Responseresponse = client.performRequest(request);
-            System.out.println(EntityUtils.toString(response.getEntity()));
-            // 返回结果
-            // {"took":3,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":1,"max_score":0.5753642,"hits":[{"_index":"book","_type":"novel","_id":"1","_score":0.5753642,"_source":{"count":10,"name":"三国演义","publishDate":1555825698934,"writer":"张飞"}}]}}
-        }catch (Exception e) {
-            e.printStackTrace();
-        }finally {
-            try{
-                client.close();
-            }catch (Exception e) {
-                e.printStackTrace();
+
+    public static void selectData(RestHighLevelClient client) throws IOException {
+        int i=1,size=2;
+        SearchRequest searchRequest = new SearchRequest("flow_investigation");
+        Scroll scroll = new Scroll(TimeValue.timeValueMinutes(5L));
+        searchRequest.scroll(scroll);
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+
+        MatchAllQueryBuilder matchAllQueryBuilder = QueryBuilders.matchAllQuery();
+        searchSourceBuilder.query(matchAllQueryBuilder);
+        searchSourceBuilder.size(size);
+
+        searchRequest.source(searchSourceBuilder);
+        SearchResponse response = client.search(searchRequest, RequestOptions.DEFAULT);
+        String scrollId = response.getScrollId();
+        SearchHit[] searchHits = response.getHits().getHits();
+
+        System.out.println(response.getHits().getTotalHits());
+        for (SearchHit searchHit : searchHits) {
+            System.out.println(searchHit.getSourceAsString());
+        }
+        while (searchHits != null && searchHits.length > 0) {
+            SearchScrollRequest scrollRequest = new SearchScrollRequest(scrollId);
+            scrollRequest.scroll(scroll);
+            response = client.scroll(scrollRequest, RequestOptions.DEFAULT);
+            scrollId = response.getScrollId();
+            searchHits = response.getHits().getHits();
+
+            for (SearchHit searchHit : searchHits) {
+                i++;
+                System.out.println(searchHit.getSourceAsString());
+            }
+            if (i > 10) {
+                break;
             }
         }
-    }*/
+    }
+
+    public static boolean clearScrollIds(RestHighLevelClient client,String... scrollIds){
+        List<String> sIds = new ArrayList<>();
+        for (String scrollId : scrollIds) {
+            sIds.add(scrollId);
+        }
+        ClearScrollRequest clearScrollRequest = new ClearScrollRequest();
+        //添加单个id
+        clearScrollRequest.addScrollId("滚动id");
+        //添加多个id
+        clearScrollRequest.setScrollIds(sIds);
+        try {
+            client.clearScroll(clearScrollRequest,RequestOptions.DEFAULT);
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
+
+    }
 
 
 }

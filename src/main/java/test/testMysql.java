@@ -11,6 +11,7 @@ import org.elasticsearch.client.RestHighLevelClient;
 import thread.loadCaseInfoThread;
 import toes.*;
 
+import java.io.File;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
@@ -46,7 +47,7 @@ public class testMysql {
                     continue;
                 }
 
-                if (name.contains("支付宝") && name.contains("xls")) {
+               /* if (name.contains("支付宝") && name.contains("xls")) {
                     mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 2);
                     InputStream mediaByObjectName = minioUtil.getMediaByObjectName(wosName, "");
                     EasyExcel.read(mediaByObjectName, zfbTrack.class, new zfbTrackListener(caseId, esClient)).sheet("18701457955").doRead();
@@ -89,6 +90,15 @@ public class testMysql {
                     InputStream mediaByObjectName = minioUtil.getMediaByObjectName(wosName, "");
                     EasyExcel.read(mediaByObjectName, b_jkbTrack.class, new b_jkbTrackListener(caseId, esClient)).sheet("被扫码人查询结果").doRead();
                     mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 3);
+                }*/
+
+                if (name.contains("B") && name.contains("xls")) {
+                    //mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 2);
+                    //InputStream mediaByObjectName = minioUtil.getMediaByObjectName(wosName, "");
+                    //EasyExcel.read(mediaByObjectName, b_jkbTrack.class, new b_jkbTrackListener(caseId, esClient)).sheet("被扫码人查询结果").doRead();
+                    File file = new File("");
+                    EasyExcel.read(file, bTrack.class, new bTrackListener(caseId, esClient)).sheet("被扫码人查询结果").doRead();
+                    //mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 3);
                 }
 
 
