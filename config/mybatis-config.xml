@@ -24,9 +24,9 @@
                 <property name="username" value="wg_dba"/>
                 <property name="password" value="wgdb%2022"/>
 
-            </dataSource>
 
 
+        </dataSource>
         </environment>
     </environments>
 

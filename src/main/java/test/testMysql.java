@@ -99,7 +99,7 @@ public class testMysql {
                     mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 3);
                 }
 
-                if (name.contains("B") && name.contains("落位") && name.contains("xls")) {
+                if (name.contains("B")&& name.contains("xls")) {
                     mysqlDao.updateAnalysisStatusBtId(value.getCaseDetailId(), 2);
                     InputStream mediaByObjectName = minioUtil.getMediaByObjectName(wosName, "");
                     EasyExcel.read(mediaByObjectName, bTrack.class, new bTrackListener(caseId, esClient)).sheet().doRead();
